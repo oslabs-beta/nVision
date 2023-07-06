@@ -1,6 +1,21 @@
+import { trace } from '@opentelemetry/api'
 import Feed from '@components/Feed';
 
 const Home = () => {
+  async function fetchGithubStars() {
+    return await trace
+      .getTracer('nextjs-example')
+      .startActiveSpan('fetchGithubStars', async (span) => {
+        try {
+          const res = await fetch('https://api.github.com/repos/vercel/next.js');
+          const data = await res.json();
+          return data.stargazers_count;
+        } finally {
+          span.end()
+        }
+      })
+  }
+  fetchGithubStars();
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">Discover & Share

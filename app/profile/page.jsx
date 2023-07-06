@@ -6,12 +6,14 @@ import { useRouter } from 'next/navigation';
 
 import Profile from '@components/Profile';
 
+import * as fetch from 'node-fetch';
+
 
 const UserProfile = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [posts, setPosts] = useState([]);
-  console.log(session);
+  // console.log(session);
 
   useEffect(() => {
     const fetchPosts = async () => {

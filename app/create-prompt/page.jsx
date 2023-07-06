@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 
 import Form from '@components/Form';
 
+import * as fetch from 'node-fetch';
+
 const CreatePrompt = () => {
   const router = useRouter();
   const { data: session } = useSession();
