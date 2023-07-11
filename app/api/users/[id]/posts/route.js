@@ -1,6 +1,5 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
-import * as fetch from 'node-fetch';
 
 connectToDB();
 

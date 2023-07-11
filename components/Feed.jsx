@@ -1,7 +1,5 @@
 'use client';
 
-import * as fetch from 'node-fetch';
-
 import { useState, useEffect } from 'react'
 
 import PromptCard from './PromptCard';

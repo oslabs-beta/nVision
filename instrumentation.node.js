@@ -1,42 +1,26 @@
 const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter, BatchSpanProcessor} = require('@opentelemetry/sdk-trace-node');
+const { ConsoleSpanExporter, BatchSpanProcessor, SimpleSpanProcessor} = require('@opentelemetry/sdk-trace-node');
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
+const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
 import { Resource } from '@opentelemetry/resources'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
 
-
 const sdk = new NodeSDK({
-  traceExporter: new ConsoleSpanExporter(),
+  // traceExporter: new BatchSpanProcessor(new OTLPTraceExporter({url: 'http://localhost:8080'})),/*new ConsoleSpanExporter(),*/
   resource: new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'NextJS-Demo',
   }),
-  spanProcessor: new BatchSpanProcessor(new OTLPTraceExporter({url: 'http://localhost:8080'})),
-  instrumentations: [new HttpInstrumentation()]
+  // metricReader: new PeriodicExportingMetricReader({
+  //   exporter: new ConsoleMetricExporter()
+  // }),
+  spanProcessor: new SimpleSpanProcessor(new OTLPTraceExporter({url: 'http://localhost:8080'})),
+  // instrumentations: [new HttpInstrumentation(), ]
 })
 
 sdk.start()
-
-
-// const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
-// const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
-// const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
-// const { registerInstrumentations } = require("@opentelemetry/instrumentation");
-
-// const sdk = new NodeSDK({
-//   traceExporter: new OTLPTraceExporter(),
-//   resource: new Resource({
-//     [SemanticResourceAttributes.SERVICE_NAME]: 'next-app',
-//   }),
-//   metricReader: new PeriodicExportingMetricReader({
-//     exporter: new BatchSpanProcessor(new ConsoleMetricExporter())
-//   }),
-//   spanProcessor: new BatchSpanProcessor(new OTLPTraceExporter({url: 'http://localhost:8080'})),
-//   instrumentations: [new HttpInstrumentation()]
-// });
-
-// sdk.start()
-
 
 
 // const provider = new NodeTracerProvider();

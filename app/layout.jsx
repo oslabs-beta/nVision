@@ -1,7 +1,6 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
 import Provider from '@components/Provider';
-import * as fetch from 'node-fetch';
 
 export const metadata = {
   title: "NextJS App",

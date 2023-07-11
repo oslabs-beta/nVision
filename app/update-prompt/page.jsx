@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import * as fetch from 'node-fetch';
-
 import Form from '@components/Form';
 
 const EditPrompt = () => {
