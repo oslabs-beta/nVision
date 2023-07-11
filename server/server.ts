@@ -1,6 +1,12 @@
+import express, { Request, Response, NextFunction, RequestHandler } from 'express';
+
+interface ServerError {
+  log: string;
+  status: number;
+  message: { err: string };
+};
+
 // PROXY
-const express = require('express');
-const http = require('http');
 const app = express();
 
 app.use(express.json());
@@ -9,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 //CREATING SERVER
 
 const server = app
-  .listen(3333, () => console.log(' Proxy running on port 3333'))
+  .listen(3333, () => console.log(' Server running on port 3333'))
   .on('uncaughtException', function (err) {
     console.log(err);
   });
@@ -27,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 //global error handler
-app.use('/', (err, req, res, next) => {
+app.use('/', (err: ServerError, req: Request, res: Response, next: NextFunction) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
     status: 400,
