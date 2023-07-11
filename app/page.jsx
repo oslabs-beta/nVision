@@ -1,3 +1,5 @@
+'use client';
+
 // import * as fetch from 'node-fetch';
 
 // import { trace } from '@opentelemetry/api'
@@ -32,6 +34,8 @@ const Home = () => {
     const res = await fetch('http://localhost:3000/api/fetch');
     const data = await res.json();
     console.log(data);
+    console.log(res.status);
+    console.log(res.statusText)
   }
   fetchAPI();
 
@@ -39,6 +43,7 @@ const Home = () => {
     const res = await fetch('https://swapi.dev/api/people/abc');
     const data = await res.json();
     console.log(data);
+    // console.log(res.status);
   }
   fetchSwapi();
 
