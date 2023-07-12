@@ -2,7 +2,6 @@ import { Request, Response, NextFunction, RequestHandler } from 'express';
 
 interface parseController {
   getData: RequestHandler,
-
 }
 
 interface fetchSpanData {
@@ -14,11 +13,6 @@ interface fetchSpanData {
   endTimeUnixNano: number,
   attributes: [any],
 }
-
-// /**
-//  * parses spans and extracts necessary data that will be sent back to client/devtool
-//  * @param {*} span - Array that contains one span object, containing attributes with tracing information
-//  */
 
 const parseFetchRoute = (span:[fetchSpanData], data:[]) => {
   const fetchSpanData = span[0];
