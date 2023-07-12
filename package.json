@@ -10,6 +10,11 @@
     "server": "ts-node --project tsconfig.server.json server/server.ts"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.0",
+    "@mui/material": "^5.14.0",
+    "@mui/x-data-grid": "^6.9.2",
     "@types/express": "^4.17.17",
     "@types/node": "^20.4.0",
     "@types/react": "18.2.14",
