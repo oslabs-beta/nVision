@@ -24,6 +24,18 @@
   margin-top: 50px;
 }
 
+.favoriteCard {
+  align-items: center;
+  background-color: #ff0000;
+  border-radius: 8px;
+  border-style: none;
+  width: 140px;
+  height: 32px;
+  font-size: 16px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .pokemonNameContainer { 
   padding: 20px;
   display: flex; 
@@ -35,6 +47,17 @@
   padding-top: 50px;
 }
 
+.individualCard {
+  width: 200px;
+  height: 300px; 
+  border: black 1px solid; 
+  border-radius: 5px;
+}
+
+.individualCardText {
+  margin-left: 20px;
+}
+
 
 body {
   background-color: pale-grey;
@@ -42,5 +65,18 @@ body {
 
 .mainTitle {
   text-align: center;
+}
+
+.homeButton {
+  align-items: center;
+  background-color: #ff0000;
+  border-radius: 8px;
+  border-style: none;
+  width: 170px;
+  height: 32px;
+  font-size: 16px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
 }
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/Link';
+import Link from 'next/link';
 
 async function getPokemon() {
   // fetch request to pokemon api
@@ -52,6 +52,3 @@ const PokemonComponent = () => {
 };
 
 export default PokemonComponent;
-
-// cards on home page, clicking it should take you to /ditto and display info
-// find more pokemon and if you like it it gets saved to your home page?
