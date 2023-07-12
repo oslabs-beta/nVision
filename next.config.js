@@ -1,12 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return [
+  images: {
+    remotePatterns: [
       {
-        source: '/api/:path*',
-        destination: 'https://localhost:3333/:path*',
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+        port: "",
+        pathname: "**",
       },
-    ];
+    ],
   },
-};
-module.exports = nextConfig;
+  experimental: {
+    instrumentationHook: true
+  },
+  // rewrites: async () => {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       destination: 'http://localhost:8080/:path*'
+  //     }
+  //   ]
+  // }
+}
+
+module.exports = nextConfig
