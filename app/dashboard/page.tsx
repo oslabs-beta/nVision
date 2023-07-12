@@ -3,6 +3,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import '../globals.css';
+import Tree from 'react-d3-tree';
 // import Tree from './';
 
 const columns: GridColDef[] = [
@@ -37,7 +38,16 @@ const columns: GridColDef[] = [
   },
 ];
 
+const getFiles = async () => {
+  const response = await fetch('/api/fileParser');
+  const data = await response.json();
+  return data;
+};
+
 export default function DataGridDemo(): any {
+  const [files, setFiles] = React.useState();
+  const [tab, setTab] = React.useState(true);
+
   const [peopleInfo, setPeopleInfo] = React.useState([
     { id: 1, lastName: 'Snowcone', firstName: 'Jon', age: 35 },
     { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
@@ -50,6 +60,14 @@ export default function DataGridDemo(): any {
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
   ]);
 
+  React.useEffect(() => {
+    const getData = async () => {
+        const data = await getFiles();
+        setFiles(data);
+    }
+    getData();
+},[])
+
   const rows: object[] = [];
 
   for (let i = 0; i < peopleInfo.length; i++) {
@@ -57,7 +75,11 @@ export default function DataGridDemo(): any {
   }
 
   return (
-    <div className=' bg-gray-800 flex direction justify-center content-center box-content p-4 mt-7 border-4'>
+    <div>
+      <button onClick={() => setTab(true)}>Table</button>
+      <button onClick={() => setTab(false)}>Tree</button>
+      {
+    tab ? (<div className=' bg-gray-800 flex direction justify-center content-center box-content p-4 mt-7 border-4'>
       <div className='flex justify-center'>
         <h1>Metrics</h1>
       </div>
@@ -80,7 +102,12 @@ export default function DataGridDemo(): any {
           />
         </Box>
       </div>
-      <div>{/* <Tree /> */}</div>
+    </div>)
+    :
+    (<div id='treeWrapper' style={{ width: '50vw', height: '50vh' }}>
+        {files && <Tree data={files} />}
+    </div>)
+    }
     </div>
   );
 }
