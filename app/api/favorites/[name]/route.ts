@@ -4,6 +4,7 @@ import { connectToDB } from "@/utils/dbConnect";
 export async function POST(request: Request, { params }: { params: { name: string } }) {
     try {
         await connectToDB();
+        console.log(params.name)
         const newFavorite = new Favorite({name: params.name})
         await newFavorite.save();
         return new Response(JSON.stringify(newFavorite), { status: 201 });

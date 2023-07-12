@@ -1,13 +1,16 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 interface Favorite {
-    name: string;
+    name: object
 }
 
 const FavoriteSchema = new Schema<Favorite>({
-    name: String
+    name: {
+    type: String,
+    unique: [true, 'You can only favorite a pokemon once']
+    }
 });
 
-const Favorite = model<Favorite>('Favorite', FavoriteSchema);
+const Favorite = models.Favorite || model<Favorite>('Favorite', FavoriteSchema);
 
 export default Favorite;
