@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import PokemonCard from '../components/PokemonCard';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -23,18 +24,9 @@ const Favorites = () => {
   return (
     <div>
       <h1>Favorite Pokemon</h1>
-      {favorites.map((pokemon) => {
-        return (
-          <div className='nameCard'>
-            <p className='pokemonName'>{pokemon.name}</p>
-            <Link href={`/whos/${pokemon.name}`}>
-              <button className='buttonCard' id={pokemon.name} onClick={test}>
-                Learn more
-              </button>
-            </Link>
-          </div>
-        );
-      })}
+      {favorites.map((pokemon) => (
+        <PokemonCard name={pokemon.name} />
+      ))}
       <Link href='./'>
         <button className='homeButton'>Get more Pokemon</button>
       </Link>
