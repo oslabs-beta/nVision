@@ -1,8 +1,6 @@
 const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { ConsoleSpanExporter, BatchSpanProcessor, SimpleSpanProcessor} = require('@opentelemetry/sdk-trace-node');
 const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
-const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
-import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
 import { Resource } from '@opentelemetry/resources'
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions'

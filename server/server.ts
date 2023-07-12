@@ -1,4 +1,4 @@
-import parseController from './parseController';
+import { parseController } from './parseController';
 import express, { Request, Response, NextFunction, RequestHandler } from 'express';
 import { registerInstrumentations } from "@opentelemetry/instrumentation";
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // this doesn't do anything because otlptraceexporter does not access '/' endpoint
-app.use('/', parseController.getdata, (req, res) => {
+app.use('/', parseController.getData, (req, res) => {
   return res.status(200).send({});
 })
 

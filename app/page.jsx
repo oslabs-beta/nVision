@@ -1,10 +1,7 @@
 'use client';
 
-// import * as fetch from 'node-fetch';
-
-// import { trace } from '@opentelemetry/api'
 // import { useEffect } from 'react';
-import Feed from '@components/Feed';
+import Feed from '../components/Feed';
 
 const Home = () => {
   // async function fetchGithubStars() {
