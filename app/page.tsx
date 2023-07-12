@@ -2,7 +2,7 @@ import PokemonComponent from "./components/Pokemon";
 
 const Home = () => {
   return (
-   <div>
+   <div className='mainTitle'>
     <h1>Pokemon</h1>
     <PokemonComponent/>
    </div>

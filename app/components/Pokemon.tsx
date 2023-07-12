@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/Link'
+import Link from 'next/Link';
 
 async function getPokemon() {
   // fetch request to pokemon api
@@ -27,28 +27,27 @@ const PokemonComponent = () => {
 
   if (pokemon) {
     const pokemonData = pokemon.map((pokemon, i) => {
-      console.log(pokemon.name, i)
+      console.log(pokemon.name, i);
 
       return (
         <div className='nameCard'>
           <p className='pokemonName'>{pokemon.name}</p>
-          {/* <button id={pokemon.name} onClick={test}>get stats</button> */}
-          <div key={pokemon.name}>
-          <Link href={`/whosthatpokemon/${pokemon.name}`} style={{color: 'red'}}>get stats</Link>
-          </div>
+          <Link href={`/whos/${pokemon.name}`}>
+            <button className='buttonCard' id={pokemon.name} onClick={test}>
+              Learn more
+            </button>
+          </Link>
         </div>
       );
-  });
+    });
 
-  function test() {
-    return console.log('in the get stats button')
-  }
+    function test() {
+      return console.log('in the get stats button');
+    }
 
     return (
-      <div className="pokemonNameContainer">
-       {pokemonData}
-      </div>
-    );
+    <div className='pokemonNameContainer'>{pokemonData}
+    </div>)
   }
 };
 
