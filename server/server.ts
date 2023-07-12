@@ -1,12 +1,13 @@
-const express = require("express");
-const parseController = require('./parseController')
-// const { NodeSDK } = require('@opentelemetry/sdk-node');
-// const { ConsoleSpanExporter, BatchSpanProcessor, NodeTracerProvider, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-node');
-// const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
-// const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
-// const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
-const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
+import parseController from './parseController';
+import express, { Request, Response, NextFunction, RequestHandler } from 'express';
+import { registerInstrumentations } from "@opentelemetry/instrumentation";
+import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
+
+interface ServerError {
+  log: string;
+  status: number;
+  message: { err: string };
+};
 
 const PORT = parseInt(process.env.PORT || "8080");
 const app = express();
