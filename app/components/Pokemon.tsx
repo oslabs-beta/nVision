@@ -33,7 +33,7 @@ const PokemonComponent = () => {
         <div className='nameCard'>
           <p className='pokemonName'>{pokemon.name}</p>
           <Link href={`/whos/${pokemon.name}`}>
-            <button className='buttonCard' id={pokemon.name} onClick={test}>
+            <button className='buttonCard' id={pokemon.name}>
               Learn more
             </button>
           </Link>
@@ -41,9 +41,7 @@ const PokemonComponent = () => {
       );
     });
 
-    function test() {
-      return console.log('in the get stats button');
-    }
+    
 
     return (
     <div className='pokemonNameContainer'>{pokemonData}

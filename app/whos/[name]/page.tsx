@@ -15,11 +15,10 @@ async function fetchPokemonInfo(name: String) {
 // image from spites.front_default;
 // height from height
 
-const PokemonInfo = async () => {
+const PokemonInfo = async (name) => {
+  const charStats = await fetchPokemonInfo(1);
 
-  const charStats = await fetchPokemonInfo('pikachu');
-
-  console.log(charStats)
+  console.log(charStats);
 
   return (
     <div>
@@ -27,19 +26,22 @@ const PokemonInfo = async () => {
       <Link href='../'>
         <button className='homeButton'>Get more Pokemon</button>
       </Link>
+
       <div className='individualCard'>
         <div className='individualCardText'>
           <p>Name: {charStats.forms[0].name} </p>
           <p>Type: {charStats.types[0].type.name}</p>
           <p>Height: {charStats.height}</p>
-          <img></img>
+          <p>Weight: {charStats.weight}</p>
         </div>
+        <div className='picBox'>
+          <img src={charStats.sprites.front_default}></img>
           <button>Save Pokemon</button>
-        <Suspense fallback={<div>Fetching stats...</div>}></Suspense>
+          <Suspense fallback={<div>Fetching stats...</div>}></Suspense>
+        </div>
       </div>
     </div>
   );
-
 };
 
 export default PokemonInfo;
