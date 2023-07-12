@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 interface Favorite {
     name: string;
@@ -8,6 +8,6 @@ const FavoriteSchema = new Schema<Favorite>({
     name: String
 });
 
-const Favorite = model<Favorite>('Favorite', FavoriteSchema);
+const Favorite = models.Favorite || model<Favorite>('Favorite', FavoriteSchema);
 
 export default Favorite;

@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import Favorite from "@/app/models/FavoritesModel";
 import { connectToDB } from "@/utils/dbConnect";
 
