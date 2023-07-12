@@ -32,7 +32,7 @@ const PokemonComponent = () => {
       return (
         <div className='nameCard'>
           <p className='pokemonName'>{pokemon.name}</p>
-          <Link href={`/whos/${pokemon.name}`}>
+          <Link href={`/whos/${pokemon.name}`} >
             <button className='buttonCard' id={pokemon.name}>
               Learn more
             </button>
@@ -40,8 +40,6 @@ const PokemonComponent = () => {
         </div>
       );
     });
-
-    
 
     return (
     <div className='pokemonNameContainer'>{pokemonData}

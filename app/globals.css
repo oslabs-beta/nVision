@@ -74,10 +74,10 @@ button:hover {
 
 .homeButton {
   align-items: center;
-  background-color: #ff0000;
+  background-color: green; 
   border-radius: 8px;
   border-style: none;
-  width: 170px;
+  width: 200px;
   height: 32px;
   font-size: 16px;
   color: white;
@@ -85,3 +85,21 @@ button:hover {
   margin-top: 50px;
 }
 
+.saveButton{
+  align-items: center;
+  background-color: black;
+  border-radius: 8px;
+  border-style: none;
+  width: 140px;
+  height: 32px;
+  font-size: 16px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 30px; 
+  margin-bottom: 10px;
+}
+
+.picBox {
+  display: flex;  
+  /* move image? */
+}

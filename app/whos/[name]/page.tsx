@@ -15,18 +15,19 @@ async function fetchPokemonInfo(name: String) {
 // image from spites.front_default;
 // height from height
 
-const PokemonInfo = async (name) => {
-  const charStats = await fetchPokemonInfo(1);
-
-  console.log(charStats);
+const PokemonInfo = async (context) => {
+  const pokemonName = context.params.name;
+  const charStats = await fetchPokemonInfo(pokemonName);
 
   return (
     <div>
       <h1>Get Stats</h1>
       <Link href='../'>
-        <button className='homeButton'>Get more Pokemon</button>
+        <button className='homeButton'>GET MORE POKEMON</button>
       </Link>
-
+      <Link href={`/favorites`}>
+        <button className='favoriteCard'>FAVORITES</button>
+      </Link>
       <div className='individualCard'>
         <div className='individualCardText'>
           <p>Name: {charStats.forms[0].name} </p>
@@ -36,7 +37,9 @@ const PokemonInfo = async (name) => {
         </div>
         <div className='picBox'>
           <img src={charStats.sprites.front_default}></img>
-          <button>Save Pokemon</button>
+        </div>
+        <div>
+          <button className='saveButton'>Save Pokemon</button>
           <Suspense fallback={<div>Fetching stats...</div>}></Suspense>
         </div>
       </div>
