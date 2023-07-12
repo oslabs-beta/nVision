@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon server.ts & next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "server": "ts-node --project tsconfig.server.json server/server.ts",
-    "server:nodemon": "nodemon --exec ts-node server/server.ts",
+    "server:nodemon": "nodemon --exec ts-node server/server.ts"
   },
   "dependencies": {
     "@types/express": "^4.17.17",
