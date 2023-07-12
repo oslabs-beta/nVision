@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .nameCard {
   /* background-color: #cc0000; */
   width: 160px;
