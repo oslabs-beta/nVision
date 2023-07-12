@@ -1,10 +1,10 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import PokemonCard from '../components/PokemonCard';
+import FavoriteCard from '../components/FavoriteCard';
 
 const Favorites = () => {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState<[]>([]);
 
   useEffect(() => {
     const getFavs = async () => {
@@ -21,6 +21,10 @@ const Favorites = () => {
     getFavs();
   }, []);
 
+  interface PokemonObj {
+    name: string; 
+  }
+
   return (
     <div>
       <h1>Favorite Pokemon</h1>
@@ -30,8 +34,8 @@ const Favorites = () => {
       </Link>
       </div>
       <div className='favorites'>
-      {favorites.map((pokemon) => (
-        <PokemonCard name={pokemon.name} />
+      {favorites.map((pokemon: PokemonObj) => (
+        <FavoriteCard name={pokemon.name} />
       ))}
       </div>
     </div>

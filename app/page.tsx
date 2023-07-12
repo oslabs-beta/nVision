@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import PokemonComponent from './components/Pokemon';
+import HomeComponent from './components/HomeCard';
 
 const Home = () => {
   return (
@@ -8,7 +8,7 @@ const Home = () => {
       <Link href={`/favorites`}>
         <button className='favoriteCard'>FAVORITES</button>
       </Link>
-      <PokemonComponent />
+      <HomeComponent/>
     </div>
   );
 };

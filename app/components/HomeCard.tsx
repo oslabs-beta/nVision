@@ -13,8 +13,16 @@ async function getPokemon() {
   return usablePokemonInfo;
 }
 
-const PokemonComponent = () => {
-  const [pokemon, setPokemon] = useState(null);
+async function fetchPokemonInfo(name: String) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+
+  const data = await response.json();
+
+  return data;
+}
+
+const HomeComponent = () => {
+  const [pokemon, setPokemon] = useState<[]>([]);
 
   const fetchAllPokemon = async () => {
     const starterPokemon = await getPokemon();
@@ -25,14 +33,21 @@ const PokemonComponent = () => {
     fetchAllPokemon();
   }, []);
 
-  if (pokemon) {
-    const pokemonData = pokemon.map((pokemon, i) => {
-      console.log(pokemon.name, i);
+  interface PokemonObj {
+    name: string;
+  }
 
+  if (pokemon) {
+    const pokemonData = pokemon.map( async(pokemon: PokemonObj) => {
+
+      const pokemonPhoto = await fetchPokemonInfo(pokemon.name)
+
+      console.log(pokemon.name);
       return (
         <div className='nameCard'>
           <p className='pokemonName'>{pokemon.name}</p>
-          <Link href={`/whos/${pokemon.name}`} >
+          <img src={pokemonPhoto.sprites.front_default}></img>
+          <Link href={`/whos/${pokemon.name}`}>
             <button className='buttonCard' id={pokemon.name}>
               Learn more
             </button>
@@ -41,10 +56,8 @@ const PokemonComponent = () => {
       );
     });
 
-    return (
-    <div className='pokemonNameContainer'>{pokemonData}
-    </div>)
+    return <div className='pokemonNameContainer'>{pokemonData}</div>;
   }
 };
 
-export default PokemonComponent;
+export default HomeComponent;

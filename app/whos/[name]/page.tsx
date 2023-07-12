@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import { Suspense } from 'react';
@@ -17,28 +17,34 @@ async function fetchPokemonInfo(name: String) {
 // image from spites.front_default;
 // height from height
 
+interface pokemonObj {
+  name: String;
+}
 
-const PokemonInfo = async (context) => {
+interface contextObj {
+  params: pokemonObj;
+}
+
+const PokemonInfo = async (context: contextObj) => {
   const pokemonName = context.params.name;
   const charStats = await fetchPokemonInfo(pokemonName);
 
   function savePokemon(name: String) {
     fetch(`/api/favorites/${name}/`, {
-      method: 'POST'
-    })
-  
+      method: 'POST',
+    });
   }
 
   return (
     <div>
       <h1>Get Stats</h1>
       <div className='double-buttons'>
-      <Link href='../'>
-        <button className='homeButton'>GET MORE POKEMON</button>
-      </Link>
-      <Link href={`/favorites`}>
-        <button className='favoriteCard'>FAVORITES</button>
-      </Link>
+        <Link href='../'>
+          <button className='homeButton'>GET MORE POKEMON</button>
+        </Link>
+        <Link href={`/favorites`}>
+          <button className='favoriteCard'>FAVORITES</button>
+        </Link>
       </div>
       <div className='individualCard'>
         <div className='individualCardText'>
@@ -51,7 +57,14 @@ const PokemonInfo = async (context) => {
           <img src={charStats.sprites.front_default}></img>
         </div>
         <div>
-          <button className='saveButton' onClick={() => savePokemon(pokemonName)}>Save Pokemon</button>
+        <Link href='../'>
+          <button
+            className='saveButton'
+            onClick={() => savePokemon(pokemonName)}
+          >
+            Save Pokemon
+          </button>
+          </Link>
           <Suspense fallback={<div>Fetching stats...</div>}></Suspense>
         </div>
       </div>
