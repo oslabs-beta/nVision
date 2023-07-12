@@ -12,7 +12,7 @@ const getFiles = async () => {
   return data;
 }
 
-const FileTree = async () => {
+const FileTree = () => {
   console.log('rendering')
   // useRef hook creates a variable that holds onto the value across rendering passes
   // (components SVG DOM element) NB initialised to null and React will assign it later in return statement
