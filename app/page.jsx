@@ -1,46 +1,18 @@
 'use client';
 
-// import { useEffect } from 'react';
 import Feed from '../components/Feed';
 
 const Home = () => {
-  // async function fetchGithubStars() {
-  //   return await trace
-  //     .getTracer('nextjs-example')
-  //     .startActiveSpan('fetchGithubStars', async (span) => {
-  //       try {
-  //         const res = await fetch('https://api.github.com/repos/vercel/next.js');
-  //         const data = await res.json();
-  //         return data.stargazers_count;
-  //       } finally {
-  //         span.end()
-  //       }
-  //     })
-  // }
-  // fetchGithubStars();
-  // useEffect(() => {
-  //   const fetchAPI = async () => {
-  //     const res = await fetch('/api/fetch');
-  //     const data = await res.json();
-  //     console.log(data);
-  //   }
-  //   fetchAPI();
-  // }, [])
-
   const fetchAPI = async () => {
-    const res = await fetch('http://localhost:3000/api/fetch');
+    const res = await fetch('/api/fetch');
     const data = await res.json();
-    console.log(data);
-    console.log(res.status);
-    console.log(res.statusText)
+    console.log(data)
   }
   fetchAPI();
 
   const fetchSwapi = async () => {
     const res = await fetch('https://swapi.dev/api/people/abc');
     const data = await res.json();
-    console.log(data);
-    // console.log(res.status);
   }
   fetchSwapi();
 

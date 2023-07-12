@@ -29,7 +29,7 @@ const parseFetchRoute = (span:[fetchSpanData], data:[]) => {
     fetchKind,
     method: attributes.find(attribute => attribute.key === 'http.method')?.value?.stringValue,
     url: attributes.find(attribute => attribute.key === 'http.url')?.value?.stringValue,
-    time: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
+    duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
   console.log(spanDataObj)
 }
@@ -50,7 +50,7 @@ const parseBaseServer = (span: [fetchSpanData], data: []) => {
     method: attributes.find(attribute => attribute.key === 'http.method')?.value?.stringValue,
     route: attributes.find(attribute => attribute.key === 'http.target')?.value?.stringValue,
     statusCode: attributes.find(attributes => attributes.key === 'http.status_code')?.value.intValue,
-    time: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
+    duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
   console.log(spanDataObj);
 }
