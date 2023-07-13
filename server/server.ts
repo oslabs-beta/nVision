@@ -4,6 +4,11 @@ import { registerInstrumentations } from "@opentelemetry/instrumentation";
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 import fs from 'fs';
 import path from 'path';
+import http from 'http';
+import { v4 as uuidv4 } from 'uuid';
+import ws from 'ws';
+
+const wss = new ws.Server({ noServer: true });
 
 interface ServerError {
   log: string;
@@ -55,8 +60,31 @@ app.use('/', (err: ServerError, req: Request, res: Response, next: NextFunction)
 
 const server = app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`)
-
 });
 
+//---------------------------------------- WEBSOCKETS ----------------------------------------
+//upgrade
+server.on('upgrade', function upgrade(request, socket, head) {
+  try {
+    wss.handleUpgrade(request, socket, head, function done(ws) {
+      wss.emit('connection', ws, request);
+    });
+  } catch (err) {
+    socket.write('HTTP/1.1 401 Unauthorized\r\n\r\n');
+    socket.destroy();
+    return;
+  }
+});
+// I'm maintaining all active connections in this object
+let client: any = undefined;
+wss.on('connection', (ctx) => {
+  client = ctx;
+  // print number of active connections
+  console.log('connected', wss.clients.size);
+  // handle close event
+  ctx.on('close', () => {
+    console.log('closed', wss.clients.size);
+  });
+});
 
 module.exports = app;

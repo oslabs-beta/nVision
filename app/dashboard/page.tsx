@@ -4,6 +4,8 @@ import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams, GridColumnVisibilityModel } from '@mui/x-data-grid';
 import '../../styles/globals.css';
+import useWebSocket from 'react-use-websocket';
+const wsURL = 'ws://localhost:8080';
 // import Tree from './';
 
 const columns: GridColDef[] = [
@@ -48,7 +50,37 @@ export default function DataGridDemo(): any {
   const [spans, setSpans] = useState([]);
   const [columnVisibilityModel, setColumnVisibilityModel] = useState<GridColumnVisibilityModel>({
       id: false,
-    });
+  });
+  
+  // --------WebSockets--------
+  const {
+    sendMessage,
+    sendJsonMessage,
+    lastMessage,
+    lastJsonMessage,
+    readyState,
+    getWebSocket,
+  } = useWebSocket(wsURL, {
+    onOpen: () => console.log('opened'),
+    //Will attempt to reconnect on all close events, such as server shutting down
+    shouldReconnect: (closeEvent) => true,
+  });
+  // useEffect(() => {
+  //   const ws = new WebSocket(wsURL);
+  //   ws.onopen = () => {
+  //     console.log('Connected to socket');
+  //   };
+  //   // on close we should update connection state
+  //   // and retry connection
+  //   ws.onclose = () => {
+  //     console.log('connection lost');
+  //   };
+  //   // terminate connection on unmount
+  //   return () => {
+  //     ws.close();
+  //   };
+  //   // retry dependency here triggers the connection attempt
+  // }, []);
 
   const fetchSpans = async () => {
     try {
@@ -67,10 +99,9 @@ export default function DataGridDemo(): any {
   }
   fetchSpans();
 
-  useEffect(() => {
-    fetchSpans()
-  }, [spans])
-
+  // useEffect(() => {
+  //   fetchSpans()
+  // }, [spans])
 
   return (
     <div className=' bg-gray-300[.4] flex flex-col justify-center content-center box-content p-4 mt-7 border-4'>

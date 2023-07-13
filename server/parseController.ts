@@ -27,8 +27,8 @@ const parseFetchRoute = (span:[fetchSpanData], data:object[]) => {
   if (kind === 3) fetchKind = 'Client';
   const spanDataObj = {
     type: 'fetch',
-    id: traceId,
-    spanId,
+    id: spanId,
+    traceId,
     parentSpanId,
     fetchKind,
     method: attributes.find(attribute => attribute.key === 'http.method')?.value?.stringValue,
@@ -53,8 +53,8 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
   if (kind === 3) fetchKind = 'Client';
   const spanDataObj = {
     type: 'route',
-    id: traceId,
-    spanId,
+    id: spanId,
+    traceId,
     parentSpanId,
     fetchKind,
     method: attributes.find(attribute => attribute.key === 'http.method')?.value?.stringValue,
