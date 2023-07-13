@@ -2,6 +2,8 @@ import express, { Request, Response, NextFunction, RequestHandler } from 'expres
 import { parseController } from './parseController';
 import { registerInstrumentations } from "@opentelemetry/instrumentation";
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
+import fs from 'fs';
+import path from 'path';
 
 interface ServerError {
   log: string;
@@ -26,10 +28,18 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// this doesn't do anything because otlptraceexporter does not access '/' endpoint
+app.get('/getSpans', parseController.fetchSpans, (req, res) => {
+  return res.status(200).json(res.locals.traces);
+})
+
+app.get('/clearSpans', parseController.clearSpans, (req, res) => {
+  return res.status(200).json('hello');
+})
+
 app.use('/', parseController.getData, (req, res) => {
-  return res.status(200).send({});
+  return res.status(200).send(res.locals.data)
 });
+
 
 //global error handler
 app.use('/', (err: ServerError, req: Request, res: Response, next: NextFunction) => {
@@ -43,8 +53,10 @@ app.use('/', (err: ServerError, req: Request, res: Response, next: NextFunction)
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening for requests on http://localhost:${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`Listening for requests on http://localhost:${PORT}`)
+
 });
+
 
 module.exports = app;

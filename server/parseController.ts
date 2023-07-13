@@ -1,7 +1,11 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
+import fs from 'fs';
+import path from 'path';
 
 interface parseController {
   getData: RequestHandler,
+  fetchSpans: RequestHandler,
+  clearSpans: RequestHandler
 }
 
 interface fetchSpanData {
@@ -14,7 +18,7 @@ interface fetchSpanData {
   attributes: [any],
 }
 
-const parseFetchRoute = (span:[fetchSpanData], data:[]) => {
+const parseFetchRoute = (span:[fetchSpanData], data:object[]) => {
   const fetchSpanData = span[0];
   const { traceId, spanId, parentSpanId, kind, startTimeUnixNano, endTimeUnixNano, attributes } = fetchSpanData;
   let fetchKind: string | undefined;
@@ -23,7 +27,7 @@ const parseFetchRoute = (span:[fetchSpanData], data:[]) => {
   if (kind === 3) fetchKind = 'Client';
   const spanDataObj = {
     type: 'fetch',
-    traceId,
+    id: traceId,
     spanId,
     parentSpanId,
     fetchKind,
@@ -31,10 +35,16 @@ const parseFetchRoute = (span:[fetchSpanData], data:[]) => {
     url: attributes.find(attribute => attribute.key === 'http.url')?.value?.stringValue,
     duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
-  console.log(spanDataObj)
+  // data.push(spanDataObj)
+  const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
+  const traceData = JSON.parse(traces);
+  traceData.traces.push(spanDataObj);
+  fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
+  // console.log(spanDataObj);
+  return;
 }
 
-const parseBaseServer = (span: [fetchSpanData], data: []) => {
+const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
   const serverSpanData = span[0];
   const { traceId, spanId, parentSpanId, kind, startTimeUnixNano, endTimeUnixNano, attributes } = serverSpanData;
   let fetchKind: string | undefined;
@@ -43,16 +53,21 @@ const parseBaseServer = (span: [fetchSpanData], data: []) => {
   if (kind === 3) fetchKind = 'Client';
   const spanDataObj = {
     type: 'route',
-    traceId,
+    id: traceId,
     spanId,
     parentSpanId,
     fetchKind,
     method: attributes.find(attribute => attribute.key === 'http.method')?.value?.stringValue,
-    route: attributes.find(attribute => attribute.key === 'http.target')?.value?.stringValue,
+    url: attributes.find(attribute => attribute.key === 'http.target')?.value?.stringValue,
     statusCode: attributes.find(attributes => attributes.key === 'http.status_code')?.value.intValue,
     duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
-  console.log(spanDataObj);
+  // data.push(spanDataObj);
+  const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
+  const traceData = JSON.parse(traces);
+  traceData.traces.push(spanDataObj);
+  fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
+  return;
 }
 
 /**
@@ -81,8 +96,21 @@ export const parseController = {
       // case 'AppRender.getBodyResult':
       //   // parseBaseServer(spans, res.locals.data);
       //   break;
+      default:
+        return next();
     }
     return next();
+  },
+  fetchSpans: function (req: Request, res: Response, next: NextFunction) {
+    const traceData = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
+    const traces = JSON.parse(traceData);
+    // console.log(traces)
+    res.locals.traces = traces;
+    return next();
+  },
+  clearSpans: function (req: Request, res: Response, next: NextFunction) {
+    console.log('in clearSpans')
+    fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify({ traces: [] }));
+    return next();
   }
-
 };
