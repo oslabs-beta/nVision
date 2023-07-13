@@ -111,10 +111,10 @@ export default function DataGridDemo(): any {
 
   return (
     <div className='h-screen'>
-      <button className='bg-gray-300[.4]' onClick={() => setTab('table')}>Table</button>
-      <button className='bg-gray-300[.4]' onClick={() => setTab('tree')}>Tree</button>
+      <button className={tab === 'table' ? 'btn  bg-gray-300' : 'btn'} onClick={() => setTab('table')}>Table</button>
+      <button className={tab === 'tree' ? 'btn ml-1 bg-gray-300' : 'btn ml-1'} onClick={() => setTab('tree')}>Tree</button>
       {tab === 'table' ? (
-        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 mt-7 border-4'>
+        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 border-4'>
           <div className='flex justify-center'>
             <h2 className='mt-5 mb-2 text-2xl font-bold text-center'>
               Network Activity
@@ -150,7 +150,7 @@ export default function DataGridDemo(): any {
           </div>
         </div>
       ) : (
-        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 mt-7 border-4 h-full w-[50vw]'>
+        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content border-4 h-[80vh] w-[70vw]'>
           <RouteTree />
         </div>
       )}
