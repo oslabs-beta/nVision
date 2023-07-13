@@ -55,24 +55,28 @@ const getFiles = async () => {
 };
 
 export default function DataGridDemo(): any {
+  const [files, setFiles] = React.useState();
+  const [tab, setTab] = React.useState(true);
   const [spans, setSpans] = useState([]);
   const [columnVisibilityModel, setColumnVisibilityModel] = useState<GridColumnVisibilityModel>({
       id: false,
   });
   
   // --------WebSockets--------
-  const {
-    sendMessage,
-    sendJsonMessage,
-    lastMessage,
-    lastJsonMessage,
-    readyState,
-    getWebSocket,
-  } = useWebSocket(wsURL, {
-    onOpen: () => console.log('opened'),
-    //Will attempt to reconnect on all close events, such as server shutting down
-    shouldReconnect: (closeEvent) => true,
-  });
+  // const {
+  //   sendMessage,
+  //   sendJsonMessage,
+  //   lastMessage,
+  //   lastJsonMessage,
+  //   readyState,
+  //   getWebSocket,
+  // } = useWebSocket(wsURL, {
+  //   onOpen: () => console.log('opened'),
+  //   //Will attempt to reconnect on all close events, such as server shutting down
+  //   shouldReconnect: (closeEvent) => true,
+  // });
+
+  // ----------Alternate WebSockets-----------
   // useEffect(() => {
   //   const ws = new WebSocket(wsURL);
   //   ws.onopen = () => {
@@ -107,24 +111,20 @@ export default function DataGridDemo(): any {
   }
   fetchSpans();
 
-  // useEffect(() => {
-  //   fetchSpans()
-  // }, [spans])
-
   return (
     <div>
       <button onClick={() => setTab(true)}>Table</button>
       <button onClick={() => setTab(false)}>Tree</button>
       {
-    tab ? (<div className=' bg-gray-300[.4] flex flex-col justify-center content-center box-content p-4 mt-7 border-4'>
+    tab ? (<div className=' bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 mt-7 border-4'>
       <div className='flex justify-center'>
         <h2 className='mt-5 mb-2 text-2xl font-bold text-center'>Network Activity</h2>
       </div>
-      <div className='flex justify-end'>
-        <Box sx={{ height: '60vh', width: '80vw', bgcolor: 'rgba(75,85,99,.2)' }}>
+      <div className='flex justify-end p-4'>
+        <Box sx={{ height: '70vh', width: '80vw', bgcolor: 'rgba(75,85,99,.2)', padding: '24px', paddingBottom: '40px' }}>
           <DataGrid
             columnVisibilityModel={columnVisibilityModel}
-            sx={{ color: 'rgb(75,85,99)', m: 2 }}
+            sx={{ /*color: 'rgb(75,85,99)',*/ m: 2 }}
             rows={spans}
             columns={columns}
             initialState={{

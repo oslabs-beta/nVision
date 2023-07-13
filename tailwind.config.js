@@ -1,3 +1,4 @@
+const daisyui = require('daisyui');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,10 +13,14 @@ module.exports = {
         satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
-      colors: {
-        'primary-orange': '#FF5722',
-      }
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ['acid', 'night'],
+    darkTheme: 'night',
+    base: true,
+    styled: true,
+    utils: true,
+  },
+  plugins: [require('daisyui')],
 }
