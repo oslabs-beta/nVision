@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 async function getPokemon() {
@@ -44,7 +44,7 @@ const HomeComponent = () => {
 
       return (
         <div className='card w-48 bg-base-100 shadow-xl m-2 items-center opacity-75'>
-          <p className='m-2 text-xl'>{pokemon.name[0].toUpperCase().concat(pokemon.name.slice(1))}</p>
+          <p className='m-4 text-xl'>{pokemon.name[0].toUpperCase().concat(pokemon.name.slice(1))}</p>
           <img src={pokemonPhoto.sprites.front_default}></img>
           <Link href={`/whos/${pokemon.name}`}>
             <button className='btn btn-primary btn-sm m-4' id={pokemon.name}>
