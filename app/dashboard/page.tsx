@@ -3,10 +3,12 @@
 import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams, GridColumnVisibilityModel } from '@mui/x-data-grid';
-import '../../styles/globals.css';
 import useWebSocket from 'react-use-websocket';
-const wsURL = 'ws://localhost:8080';
+import Tree from 'react-d3-tree';
+import '../../styles/globals.css';
 // import Tree from './';
+
+const wsURL = 'ws://localhost:8080';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'Trace Id', width: 90 },
@@ -45,6 +47,12 @@ const columns: GridColDef[] = [
   //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
   // },
 ];
+
+const getFiles = async () => {
+  const response = await fetch('/api/fileParser');
+  const data = await response.json();
+  return data;
+};
 
 export default function DataGridDemo(): any {
   const [spans, setSpans] = useState([]);
@@ -104,7 +112,11 @@ export default function DataGridDemo(): any {
   // }, [spans])
 
   return (
-    <div className=' bg-gray-300[.4] flex flex-col justify-center content-center box-content p-4 mt-7 border-4'>
+    <div>
+      <button onClick={() => setTab(true)}>Table</button>
+      <button onClick={() => setTab(false)}>Tree</button>
+      {
+    tab ? (<div className=' bg-gray-300[.4] flex flex-col justify-center content-center box-content p-4 mt-7 border-4'>
       <div className='flex justify-center'>
         <h2 className='mt-5 mb-2 text-2xl font-bold text-center'>Network Activity</h2>
       </div>
@@ -128,7 +140,12 @@ export default function DataGridDemo(): any {
           />
         </Box>
       </div>
-      <div>{/* <Tree /> */}</div>
+    </div>)
+    :
+    (<div id='treeWrapper' style={{ width: '50vw', height: '50vh' }}>
+        {files && <Tree data={files} />}
+    </div>)
+    }
     </div>
   );
 }

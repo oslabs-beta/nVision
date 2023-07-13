@@ -11,7 +11,7 @@ export const connectToDB = async () => {
   }
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: 'nextJS-demo',
+      dbName: 'favorite-pokemon',
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
