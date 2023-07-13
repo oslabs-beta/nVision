@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 interface CardProps {
   name: string;
+  deleteFunc: Function
 }
 async function fetchPokemonInfo(name: String) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
@@ -12,35 +13,22 @@ async function fetchPokemonInfo(name: String) {
 }
 
 const FavoriteCard = async (props: CardProps) => {
-
-  async function deletePokemon(name: String) {
-    fetch(`/api/favorites/${name}/`, {
-      method: 'DELETE'
-    })
-
-    // need to refactor below 
-    let cardToDelete = event.target.parentElement.parentElement.parentElement
-    cardToDelete.remove()
-
-    console.log("this was clicked:", cardToDelete)
-  }
-
-  const pokemonPhoto = await fetchPokemonInfo(props.name)
+  
+  const pokemonPhoto = await fetchPokemonInfo(props.name);
 
   return (
-    <div className='nameCard'>
-      <p className='pokemonName'>{props.name}</p>
+    <div className='flex flex-col justify-center items-center card w-50 bg-base-100 shadow-xl m-2'>
+      <p className='m-2'>{props.name}</p>
       <img src={pokemonPhoto.sprites.front_default}></img>
-      <div className='multiButton'>
-        <div>
       <Link href={`/whos/${props.name}`}>
-        <button className='buttonCard'>Learn more</button>
+        <button className='btn btn-primary btn-xs m-2'>Learn more</button>
       </Link>
-      </div>
-      <div>
-      <button className='deleteButton' onClick={() => deletePokemon(props.name)}>Delete</button>
-      </div>
-      </div>
+      <button
+        className='btn btn-xs btn-warning m-2'
+        onClick={() => props.deleteFunc(props.name)}
+      >
+        Delete
+      </button>
     </div>
   );
 };

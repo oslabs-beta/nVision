@@ -36,30 +36,31 @@ const PokemonInfo = async (context: contextObj) => {
   }
 
   return (
-    <div>
-      <h1>Get Stats</h1>
-      <div className='double-buttons'>
+    <div className='flex flex-wrap flex-col items-center'>
+      <h1 className='text-3xl m-7'>Get Stats</h1>
+      <div className='flex flex-hor justify-center items-center'>
         <Link href='../'>
-          <button className='homeButton'>GET MORE POKEMON</button>
+          <button className='btn btn-secondary'>GET MORE POKEMON</button>
         </Link>
         <Link href={`/favorites`}>
-          <button className='favoriteCard'>FAVORITES</button>
+          <button className='btn btn-accent'>FAVORITES</button>
         </Link>
       </div>
-      <div className='individualCard'>
-        <div className='individualCardText'>
+      <div className='flex flex-wrap justify-center'>
+      <div className='card w-50 bg-base-100 shadow-xl m-2 items-center'>
+        <div className="m-2">
           <p>Name: {charStats.forms[0].name} </p>
           <p>Type: {charStats.types[0].type.name}</p>
           <p>Height: {charStats.height}</p>
           <p>Weight: {charStats.weight}</p>
-        </div>
+          </div>
         <div className='picBox'>
           <img src={charStats.sprites.front_default}></img>
         </div>
         <div>
         <Link href='../'>
           <button
-            className='saveButton'
+            className='btn btn-success btn-xs m-2'
             onClick={() => savePokemon(pokemonName)}
           >
             Save Pokemon
@@ -68,6 +69,7 @@ const PokemonInfo = async (context: contextObj) => {
           <Suspense fallback={<div>Fetching stats...</div>}></Suspense>
         </div>
       </div>
+    </div>
     </div>
   );
 };

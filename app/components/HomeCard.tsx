@@ -44,11 +44,11 @@ const HomeComponent = () => {
 
       console.log(pokemon.name);
       return (
-        <div className='nameCard'>
-          <p className='pokemonName'>{pokemon.name}</p>
+        <div className='card w-50 bg-base-100 shadow-xl m-2 items-center'>
+          <p className='m-2'>{pokemon.name}</p>
           <img src={pokemonPhoto.sprites.front_default}></img>
           <Link href={`/whos/${pokemon.name}`}>
-            <button className='buttonCard' id={pokemon.name}>
+            <button className='btn btn-primary btn-xs m-2' id={pokemon.name}>
               Learn more
             </button>
           </Link>
@@ -56,7 +56,7 @@ const HomeComponent = () => {
       );
     });
 
-    return <div className='pokemonNameContainer'>{pokemonData}</div>;
+    return <div className='flex flex-wrap flex-hor justify-center'>{pokemonData}</div>;
   }
 };
 
