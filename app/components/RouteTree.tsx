@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Tree from 'react-d3-tree';
-import '../custom-tree.css';
+import '../../styles/custom-tree.css';
 
 const getFiles = async () => {
   const response = await fetch('/api/fileParser');
@@ -11,7 +11,6 @@ const getFiles = async () => {
 };
 
 export default function RouteTree(): any {
-  // const treeRef = useRef();
   const [files, setFiles] = useState();
 
   useEffect(() => {
@@ -23,7 +22,7 @@ export default function RouteTree(): any {
   }, []);
 
   return (
-    <div id='treeWrapper' style={{ width: '30vw', height: '100vh' }}>
+    <div id='treeWrapper' style={{ width: '100%', height: '100%' }}>
       {files && (
         <Tree
           translate={{x:100, y:window.innerHeight/2}}
