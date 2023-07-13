@@ -19,7 +19,7 @@ const columns: GridColDef[] = [
   {
     field: 'url',
     headerName: 'Route / URL',
-    width: 300,
+    width: 350,
     editable: true,
   },
   {
@@ -42,7 +42,7 @@ const columns: GridColDef[] = [
   },
   {
     field: 'duration',
-    headerName: 'Duration',
+    headerName: 'Duration (ms)',
     type: 'number',
     width: 100,
   },
@@ -124,15 +124,15 @@ export default function DataGridDemo(): any {
             <Box
               sx={{
                 height: '70vh',
-                width: '80vw',
-                bgcolor: 'rgba(75,85,99,.2)',
+                width: '70vw',
+                bgcolor: 'rgba(75,85,99,.5)',
                 padding: '24px',
                 paddingBottom: '40px',
               }}
             >
               <DataGrid
                 columnVisibilityModel={columnVisibilityModel}
-                sx={{ /*color: 'rgb(75,85,99)',*/ m: 2 }}
+                sx={{ color: 'white', m: 2 }}
                 rows={spans}
                 columns={columns}
                 initialState={{
