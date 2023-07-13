@@ -1,14 +1,14 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../globals.css';
-import Chart from '../components/Chart';
-import RouteTree from '../components/RouteTree';
+import Chart from './Chart';
+import RouteTree from './RouteTree';
 
 export default function Dashboard(): any {
   const [tab, setTab] = useState(false);
 
   return (
-    <div>
+    <div style={{ width: '30vw', height: '100vh' }}>
       <button onClick={() => setTab(true)}>Table</button>
       <button onClick={() => setTab(false)}>Tree</button>
       {tab ? (

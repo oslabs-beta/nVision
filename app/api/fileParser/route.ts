@@ -11,6 +11,7 @@ export async function GET(request: Request) {
 
   function parseFolders(directory: any, rootObj: any) {
     fs.readdirSync(directory).forEach((file) => {
+      console.log(file)
       const absolute = path.join(directory, file);
 
       if (fs.statSync(absolute).isDirectory()) {
