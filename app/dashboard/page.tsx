@@ -111,8 +111,8 @@ export default function DataGridDemo(): any {
 
   return (
     <div className='h-screen'>
-      <button className='btn' onClick={() => setTab('table')}>Table</button>
-      <button className='btn ml-1' onClick={() => setTab('tree')}>Tree</button>
+      <button className={tab === 'table' ? 'btn  bg-gray-300' : 'btn'} onClick={() => setTab('table')}>Table</button>
+      <button className={tab === 'tree' ? 'btn ml-1 bg-gray-300' : 'btn ml-1'} onClick={() => setTab('tree')}>Tree</button>
       {tab === 'table' ? (
         <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 border-4'>
           <div className='flex justify-center'>
