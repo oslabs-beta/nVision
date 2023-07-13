@@ -32,6 +32,7 @@ export default function RouteTree(): any {
           rootNodeClassName='node__root'
           branchNodeClassName='node__branch'
           leafNodeClassName='node__leaf'
+          depthFactor={300}
         />
       )}
     </div>
