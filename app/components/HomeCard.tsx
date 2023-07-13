@@ -42,13 +42,12 @@ const HomeComponent = () => {
 
       const pokemonPhoto = await fetchPokemonInfo(pokemon.name)
 
-      console.log(pokemon.name);
       return (
-        <div className='card w-50 bg-base-100 shadow-xl m-2 items-center'>
-          <p className='m-2'>{pokemon.name}</p>
+        <div className='card w-48 bg-base-100 shadow-xl m-2 items-center opacity-75'>
+          <p className='m-2 text-xl'>{pokemon.name[0].toUpperCase().concat(pokemon.name.slice(1))}</p>
           <img src={pokemonPhoto.sprites.front_default}></img>
           <Link href={`/whos/${pokemon.name}`}>
-            <button className='btn btn-primary btn-xs m-2' id={pokemon.name}>
+            <button className='btn btn-primary btn-sm m-4' id={pokemon.name}>
               Learn more
             </button>
           </Link>

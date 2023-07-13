@@ -1,41 +1,51 @@
 'use client';
-import * as React from 'react';
+
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import '../globals.css';
+import { DataGrid, GridColDef, GridValueGetterParams, GridColumnVisibilityModel } from '@mui/x-data-grid';
+import useWebSocket from 'react-use-websocket';
 import Tree from 'react-d3-tree';
+import '../../styles/globals.css';
 // import Tree from './';
 
+const wsURL = 'ws://localhost:8080';
+
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'id', headerName: 'Trace Id', width: 90 },
   {
-    field: 'firstName',
-    headerName: 'First name',
+    field: 'url',
+    headerName: 'Route / URL',
+    width: 300,
+    editable: true,
+  },
+  {
+    field: 'fetchKind',
+    headerName: 'Fetched From',
     width: 150,
     editable: true,
   },
   {
-    field: 'lastName',
-    headerName: 'Last name',
-    width: 150,
+    field: 'method',
+    headerName: 'Method',
+    width: 125,
     editable: true,
   },
   {
-    field: 'age',
-    headerName: 'Age',
+    field: 'statusCode',
+    headerName: 'Status Code',
+    width: 125,
+    editable: true,
+  },
+  {
+    field: 'duration',
+    headerName: 'Duration',
     type: 'number',
-    width: 110,
-    editable: true,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
+    width: 100,
+  }
+  // {
+  //   valueGetter: (params: GridValueGetterParams) =>
+  //     `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  // },
 ];
 
 const getFiles = async () => {
@@ -47,57 +57,85 @@ const getFiles = async () => {
 export default function DataGridDemo(): any {
   const [files, setFiles] = React.useState();
   const [tab, setTab] = React.useState(true);
+  const [spans, setSpans] = useState([]);
+  const [columnVisibilityModel, setColumnVisibilityModel] = useState<GridColumnVisibilityModel>({
+      id: false,
+  });
+  
+  // --------WebSockets--------
+  // const {
+  //   sendMessage,
+  //   sendJsonMessage,
+  //   lastMessage,
+  //   lastJsonMessage,
+  //   readyState,
+  //   getWebSocket,
+  // } = useWebSocket(wsURL, {
+  //   onOpen: () => console.log('opened'),
+  //   //Will attempt to reconnect on all close events, such as server shutting down
+  //   shouldReconnect: (closeEvent) => true,
+  // });
 
-  const [peopleInfo, setPeopleInfo] = React.useState([
-    { id: 1, lastName: 'Snowcone', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lee', firstName: 'Isaac', age: 24 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  ]);
+  // ----------Alternate WebSockets-----------
+  // useEffect(() => {
+  //   const ws = new WebSocket(wsURL);
+  //   ws.onopen = () => {
+  //     console.log('Connected to socket');
+  //   };
+  //   // on close we should update connection state
+  //   // and retry connection
+  //   ws.onclose = () => {
+  //     console.log('connection lost');
+  //   };
+  //   // terminate connection on unmount
+  //   return () => {
+  //     ws.close();
+  //   };
+  //   // retry dependency here triggers the connection attempt
+  // }, []);
 
-  React.useEffect(() => {
-    const getData = async () => {
-        const data = await getFiles();
-        setFiles(data);
+  const fetchSpans = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/api/getSpans', {
+        mode: 'no-cors',
+        cache: 'no-store'
+      });
+      const data = await res.json();
+      // console.log(data); 
+      if (data.traces.length > 0) {
+        setSpans(data.traces)
+      }
+    } catch (err) {
+      console.error(err)
     }
-    getData();
-},[])
-
-  const rows: object[] = [];
-
-  for (let i = 0; i < peopleInfo.length; i++) {
-    rows.push(peopleInfo[i]);
   }
+  fetchSpans();
 
   return (
     <div>
       <button onClick={() => setTab(true)}>Table</button>
       <button onClick={() => setTab(false)}>Tree</button>
       {
-    tab ? (<div className=' bg-gray-800 flex direction justify-center content-center box-content p-4 mt-7 border-4'>
+    tab ? (<div className=' bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 mt-7 border-4'>
       <div className='flex justify-center'>
-        <h1>Metrics</h1>
+        <h2 className='mt-5 mb-2 text-2xl font-bold text-center'>Network Activity</h2>
       </div>
-      <div className='flex justify-end'>
-        <Box sx={{ height: 400, width: 900, bgcolor: 'gray' }}>
+      <div className='flex justify-end p-4'>
+        <Box sx={{ height: '70vh', width: '80vw', bgcolor: 'rgba(75,85,99,.2)', padding: '24px', paddingBottom: '40px' }}>
           <DataGrid
-            sx={{ color: 'white' }}
-            rows={rows}
+            columnVisibilityModel={columnVisibilityModel}
+            sx={{ /*color: 'rgb(75,85,99)',*/ m: 2 }}
+            rows={spans}
             columns={columns}
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 5,
+                  pageSize: 10,
                 },
               },
             }}
             pageSizeOptions={[5]}
-            checkboxSelection
+            // checkboxSelection
             disableRowSelectionOnClick
           />
         </Box>
