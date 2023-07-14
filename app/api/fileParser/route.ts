@@ -37,7 +37,35 @@ export async function GET(request: Request) {
 
   parseFolders(root, files);
 
+  // if console.log() after certain depth end up with [Object] displaying instead of actual object - below shows nesting 
+  console.dir(files, { depth: null });
   console.log('what is file', typeof files)
 
   return new Response(JSON.stringify(files));
 }
+
+// Below is sample of object that tree expects 
+// const data = {
+  //   name: './app',
+  //   children: [
+  //     {
+  //       name: 'folder1',
+  //       children: [
+  //         { name: 'file1.txt', children: [{ name: 'testgrandchild' }] },
+  //         { name: 'file2.txt' },
+  //       ],
+  //     },
+  //     {
+  //       name: 'folder2',
+  //       children: [{ name: 'file3.txt' }, { name: 'file4.txt' }],
+  //     },
+  //     {
+  //       name: 'folder3',
+  //       children: [{ name: 'file5.txt' }, { name: 'file6.txt' }],
+  //     },
+  //     {
+  //       name: 'folder4',
+  //       children: [{ name: 'file7.txt' }, { name: 'file8.txt' }],
+  //     },
+  //   ],
+  // };
