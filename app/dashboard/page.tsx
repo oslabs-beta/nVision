@@ -92,7 +92,7 @@ export default function DataGridDemo(): any {
       console.error(err);
     }
   };
-  // fetchSpans();
+  fetchSpans();
 
   return (
     <div className='h-screen'>
