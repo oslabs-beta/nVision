@@ -70,6 +70,9 @@ const server = app.listen(PORT, () => {
 //upgrade
 server.on('upgrade', function upgrade(request, socket, head) {
   try {
+    // authentication and some other steps will come here
+    // we can choose whether to upgrade or not
+
     wss.handleUpgrade(request, socket, head, function done(ws) {
       wss.emit('connection', ws, request);
     });
@@ -79,15 +82,25 @@ server.on('upgrade', function upgrade(request, socket, head) {
     return;
   }
 });
-// I'm maintaining all active connections in this object
+
 let client: any = undefined;
-wss.on('connection', (ctx) => {
-  client = ctx;
-  // print number of active connections
-  console.log('connected', wss.clients.size);
+
+wss.on('connection', function connection(ws) {
+  console.log(`Recieved a new connection.`);
+  ws.send('[{data: data, swag: swag, Isaac: Lee,}]');
+
+  ws.on('message', function message(data, isBinary) {
+    console.log('received message', data.toString());
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(data, { binary: isBinary });
+      }
+    });
+  });
+
   // handle close event
-  ctx.on('close', () => {
-    console.log('closed', wss.clients.size);
+  ws.on('close', () => {
+    console.log('closed', 'bye bye');
   });
 });
 

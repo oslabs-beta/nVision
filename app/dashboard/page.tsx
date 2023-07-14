@@ -61,36 +61,21 @@ export default function DataGridDemo(): any {
     });
 
   // --------WebSockets--------
-  // const {
-  //   sendMessage,
-  //   sendJsonMessage,
-  //   lastMessage,
-  //   lastJsonMessage,
-  //   readyState,
-  //   getWebSocket,
-  // } = useWebSocket(wsURL, {
-  //   onOpen: () => console.log('opened'),
-  //   //Will attempt to reconnect on all close events, such as server shutting down
-  //   shouldReconnect: (closeEvent) => true,
-  // });
-
-  // ----------Alternate WebSockets-----------
-  // useEffect(() => {
-  //   const ws = new WebSocket(wsURL);
-  //   ws.onopen = () => {
-  //     console.log('Connected to socket');
-  //   };
-  //   // on close we should update connection state
-  //   // and retry connection
-  //   ws.onclose = () => {
-  //     console.log('connection lost');
-  //   };
-  //   // terminate connection on unmount
-  //   return () => {
-  //     ws.close();
-  //   };
-  //   // retry dependency here triggers the connection attempt
-  // }, []);
+  useEffect(() => {
+    const ws = new WebSocket(wsURL);
+    ws.onopen = () => {
+      console.log('Connected to socket');
+      ws.send('FROM THE CLIENT');
+    };
+    ws.onmessage = (message) => {
+      console.log(message.data);
+    };
+    // on close we should update connection state
+    // and retry connection
+    ws.onclose = () => {
+      console.log('connection lost');
+    };
+  });
 
   const fetchSpans = async () => {
     try {
@@ -111,8 +96,18 @@ export default function DataGridDemo(): any {
 
   return (
     <div className='h-screen'>
-      <button className={tab === 'table' ? 'btn-1  bg-gray-300' : 'btn-1'} onClick={() => setTab('table')}>Table</button>
-      <button className={tab === 'tree' ? 'btn-1 ml-1 bg-gray-300' : 'btn-1 ml-1'} onClick={() => setTab('tree')}>Tree</button>
+      <button
+        className={tab === 'table' ? 'btn-1  bg-gray-300' : 'btn-1'}
+        onClick={() => setTab('table')}
+      >
+        Table
+      </button>
+      <button
+        className={tab === 'tree' ? 'btn-1 ml-1 bg-gray-300' : 'btn-1 ml-1'}
+        onClick={() => setTab('tree')}
+      >
+        Tree
+      </button>
       {tab === 'table' ? (
         <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 border-4'>
           <div className='flex justify-center'>
