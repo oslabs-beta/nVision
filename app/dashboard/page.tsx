@@ -75,7 +75,7 @@ export default function DataGridDemo(): any {
     ws.onclose = () => {
       console.log('connection lost');
     };
-  });
+  }, []);
 
   const fetchSpans = async () => {
     try {
@@ -92,7 +92,7 @@ export default function DataGridDemo(): any {
       console.error(err);
     }
   };
-  fetchSpans();
+  // fetchSpans();
 
   return (
     <div className='h-screen'>
