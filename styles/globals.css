@@ -170,7 +170,7 @@
 }
 
 @layer components {
-  .btn {
-    @apply rounded-tl-lg rounded-tr-lg rounded-bl-none rounded-br-none btn-sm;
+  .btn-1 {
+    @apply rounded-tl-lg rounded-tr-lg rounded-bl-none rounded-br-none btn-sm bg-gray-300/[.4];
   }
 }
