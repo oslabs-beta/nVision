@@ -45,27 +45,43 @@ export async function GET(request: Request) {
 }
 
 // Below is sample of object that tree expects 
-// const data = {
-  //   name: './app',
-  //   children: [
-  //     {
-  //       name: 'folder1',
-  //       children: [
-  //         { name: 'file1.txt', children: [{ name: 'testgrandchild' }] },
-  //         { name: 'file2.txt' },
-  //       ],
-  //     },
-  //     {
-  //       name: 'folder2',
-  //       children: [{ name: 'file3.txt' }, { name: 'file4.txt' }],
-  //     },
-  //     {
-  //       name: 'folder3',
-  //       children: [{ name: 'file5.txt' }, { name: 'file6.txt' }],
-  //     },
-  //     {
-  //       name: 'folder4',
-  //       children: [{ name: 'file7.txt' }, { name: 'file8.txt' }],
-  //     },
-  //   ],
-  // };
+// {
+//   name: './app',
+//   children: [
+//     {
+//       name: 'api',
+//       children: [
+//         { name: 'clearSpans', children: [ { name: 'route.js' } ] },
+//         {
+//           name: 'favorites',
+//           children: [
+//             { name: '[name]', children: [ { name: 'route.ts' } ] },
+//             { name: 'route.ts' }
+//           ]
+//         },
+//         { name: 'fileParser', children: [ { name: 'route.ts' } ] },
+//         { name: 'getSpans', children: [ { name: 'route.js' } ] }
+//       ]
+//     },
+//     {
+//       name: 'components',
+//       children: [
+//         { name: 'FavoriteCard.tsx' },
+//         { name: 'HomeCard.tsx' },
+//         { name: 'RouteTree.tsx' }
+//       ]
+//     },
+//     { name: 'dashboard', children: [ { name: 'page.tsx' } ] },
+//     { name: 'favorites', children: [ { name: 'page.tsx' } ] },
+//     { name: 'layout.tsx' },
+//     { name: 'loading.tsx' },
+//     { name: 'models', children: [ { name: 'FavoritesModel.ts' } ] },
+//     { name: 'page.tsx' },
+//     {
+//       name: 'whos',
+//       children: [
+//         { name: '[name]', children: [ { name: 'page.tsx' } ] }
+//       ]
+//     }
+//   ]
+// }
