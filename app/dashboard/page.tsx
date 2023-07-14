@@ -19,7 +19,7 @@ const columns: GridColDef[] = [
   {
     field: 'url',
     headerName: 'Route / URL',
-    width: 300,
+    width: 350,
     editable: true,
   },
   {
@@ -42,7 +42,7 @@ const columns: GridColDef[] = [
   },
   {
     field: 'duration',
-    headerName: 'Duration',
+    headerName: 'Duration (ms)',
     type: 'number',
     width: 100,
   },
@@ -61,36 +61,21 @@ export default function DataGridDemo(): any {
     });
 
   // --------WebSockets--------
-  // const {
-  //   sendMessage,
-  //   sendJsonMessage,
-  //   lastMessage,
-  //   lastJsonMessage,
-  //   readyState,
-  //   getWebSocket,
-  // } = useWebSocket(wsURL, {
-  //   onOpen: () => console.log('opened'),
-  //   //Will attempt to reconnect on all close events, such as server shutting down
-  //   shouldReconnect: (closeEvent) => true,
-  // });
-
-  // ----------Alternate WebSockets-----------
-  // useEffect(() => {
-  //   const ws = new WebSocket(wsURL);
-  //   ws.onopen = () => {
-  //     console.log('Connected to socket');
-  //   };
-  //   // on close we should update connection state
-  //   // and retry connection
-  //   ws.onclose = () => {
-  //     console.log('connection lost');
-  //   };
-  //   // terminate connection on unmount
-  //   return () => {
-  //     ws.close();
-  //   };
-  //   // retry dependency here triggers the connection attempt
-  // }, []);
+  useEffect(() => {
+    const ws = new WebSocket(wsURL);
+    ws.onopen = () => {
+      console.log('Connected to socket');
+      ws.send('FROM THE CLIENT');
+    };
+    ws.onmessage = (message) => {
+      console.log(message.data);
+    };
+    // on close we should update connection state
+    // and retry connection
+    ws.onclose = () => {
+      console.log('connection lost');
+    };
+  }, []);
 
   const fetchSpans = async () => {
     try {
@@ -111,10 +96,20 @@ export default function DataGridDemo(): any {
 
   return (
     <div className='h-screen'>
-      <button className='bg-gray-300[.4]' onClick={() => setTab('table')}>Table</button>
-      <button className='bg-gray-300[.4]' onClick={() => setTab('tree')}>Tree</button>
+      <button
+        className={tab === 'table' ? 'btn-1  bg-gray-300' : 'btn-1'}
+        onClick={() => setTab('table')}
+      >
+        Table
+      </button>
+      <button
+        className={tab === 'tree' ? 'btn-1 ml-1 bg-gray-300' : 'btn-1 ml-1'}
+        onClick={() => setTab('tree')}
+      >
+        Tree
+      </button>
       {tab === 'table' ? (
-        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 mt-7 border-4'>
+        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 border-4'>
           <div className='flex justify-center'>
             <h2 className='mt-5 mb-2 text-2xl font-bold text-center'>
               Network Activity
@@ -124,15 +119,15 @@ export default function DataGridDemo(): any {
             <Box
               sx={{
                 height: '70vh',
-                width: '80vw',
-                bgcolor: 'rgba(75,85,99,.2)',
+                width: '70vw',
+                bgcolor: 'rgba(75,85,99,.5)',
                 padding: '24px',
                 paddingBottom: '40px',
               }}
             >
               <DataGrid
                 columnVisibilityModel={columnVisibilityModel}
-                sx={{ /*color: 'rgb(75,85,99)',*/ m: 2 }}
+                sx={{ color: 'white', m: 2 }}
                 rows={spans}
                 columns={columns}
                 initialState={{
@@ -150,7 +145,7 @@ export default function DataGridDemo(): any {
           </div>
         </div>
       ) : (
-        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 mt-7 border-4 h-full w-[50vw]'>
+        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content border-4 h-[80vh] w-[70vw]'>
           <RouteTree />
         </div>
       )}

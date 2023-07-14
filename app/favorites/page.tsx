@@ -35,10 +35,10 @@ const Favorites = () => {
 
   return (
     <div className='flex flex-wrap flex-col items-center'>
-      <h1 className='text-3xl m-7'>Favorite Pokemon</h1>
+      <h1 className='text-3xl m-6 font-bold'>Favorite Pokemon</h1>
       <div className='flex flex-hor justify-center items-center'>
       <Link href='./'>
-        <button className='btn btn-secondary'>GET MORE POKEMON</button>
+        <button className='btn btn-secondary mb-3'>GET MORE POKEMON</button>
       </Link>
       </div>
       <div className='flex flex-wrap flex-row justify-center items-center'>
