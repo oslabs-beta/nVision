@@ -77,22 +77,25 @@ export default function DataGridDemo(): any {
     };
   }, []);
 
-  const fetchSpans = async () => {
-    try {
-      const res = await fetch('http://localhost:3000/api/getSpans', {
-        mode: 'no-cors',
-        cache: 'no-store',
-      });
-      const data = await res.json();
-      // console.log(data);
-      if (data.traces.length > 0) {
-        setSpans(data.traces);
+  useEffect(() => {
+    const fetchSpans = async () => {
+      try {
+        const res = await fetch('/api/getSpans', {
+          mode: 'no-cors',
+          cache: 'no-store',
+        });
+        const data = await res.json();
+        // console.log(data);
+        if (data.traces.length > 0) {
+          setSpans(data.traces);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  fetchSpans();
+    };
+
+    fetchSpans();
+  },[]);
 
   return (
     <div className='h-screen'>

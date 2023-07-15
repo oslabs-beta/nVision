@@ -1,5 +1,6 @@
 'use client';
 
+import Loading from '@/app/loading';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
@@ -66,7 +67,7 @@ const PokemonInfo = async (context: contextObj) => {
             Save Pokemon
           </button>
           </Link>
-          <Suspense fallback={<div>Fetching stats...</div>}></Suspense>
+          <Suspense fallback={<Loading />}></Suspense>
         </div>
       </div>
     </div>
