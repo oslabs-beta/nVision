@@ -35,12 +35,11 @@ const parseFetchRoute = (span:[fetchSpanData], data:object[]) => {
     url: attributes.find(attribute => attribute.key === 'http.url')?.value?.stringValue,
     duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
-  // data.push(spanDataObj)
-  const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
-  const traceData = JSON.parse(traces);
-  traceData.traces.push(spanDataObj);
-  fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
-  // console.log(spanDataObj);
+  data.push(spanDataObj)
+  // const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
+  // const traceData = JSON.parse(traces);
+  // traceData.traces.push(spanDataObj);
+  // fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
   return;
 }
 
@@ -62,11 +61,11 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
     statusCode: attributes.find(attributes => attributes.key === 'http.status_code')?.value.intValue,
     duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
-  // data.push(spanDataObj);
-  const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
-  const traceData = JSON.parse(traces);
-  traceData.traces.push(spanDataObj);
-  fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
+  data.push(spanDataObj);
+  // const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
+  // const traceData = JSON.parse(traces);
+  // traceData.traces.push(spanDataObj);
+  // fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
   return;
 }
 
@@ -81,6 +80,7 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
 export const parseController = {
   getData: function (req: Request, res: Response, next: NextFunction) {
     const spans = req.body.resourceSpans[0].scopeSpans[0].spans;
+    // console.dir(req.body.resourceSpans[0].scopeSpans[0], {depth: null})
   
     const spanType = spans[0].attributes.find(
       (attr: { key: string; }) => attr.key === 'next.span_type'
