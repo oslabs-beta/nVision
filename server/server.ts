@@ -11,6 +11,12 @@ import fs from 'fs';
 import path from 'path';
 import ws from 'ws';
 
+// Importing the events module
+import EventEmitter from 'events';
+ 
+// Initializing instance of EventEmitter to be used
+const emitter = new ws.EventEmitter();
+
 const wss = new ws.Server({ noServer: true });
 
 interface ServerError {
@@ -22,15 +28,7 @@ interface ServerError {
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 
-// const provider = new NodeTracerProvider();
-
-// const exporter = new OTLPTraceExporter({ url: 'http://localhost:8080' });
-// provider.addSpanProcessor(new BatchSpanProcessor(exporter));
-// provider.register();
-
-// registerInstrumentations({
-//   instrumentations: [new HttpInstrumentation()],
-// });
+let client:ws;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,7 +42,10 @@ app.get('/clearSpans', parseController.clearSpans, (req, res) => {
 });
 
 app.use('/', parseController.getData, (req, res) => {
-  return res.status(200).send(res.locals.data);
+  if (res.locals.data.length > 0) {
+    client.send(JSON.stringify(res.locals.data));
+  }
+  return res.status(200)
 });
 
 //global error handler
@@ -83,12 +84,11 @@ server.on('upgrade', function upgrade(request, socket, head) {
   }
 });
 
-let client: any = undefined;
 
 wss.on('connection', function connection(ws) {
   console.log(`Recieved a new connection.`);
-  ws.send('[{data: data, swag: swag, Isaac: Lee,}]');
-
+  client = ws;
+  // ws.send('[{data: data, swag: swag, Isaac: Lee,}]');
   ws.on('message', function message(data, isBinary) {
     console.log('received message', data.toString());
     wss.clients.forEach(function each(client) {
