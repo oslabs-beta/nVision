@@ -34,13 +34,14 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.3",
     "express": "^4.18.2",
-    "mongoose": "^7.3.2",
+    "mongoose": "^7.4.0",
     "next": "^13.4.9",
     "next-auth": "^4.22.1",
     "opentelemetry": "^0.1.0",
     "react": "18.2.0",
     "react-d3-tree": "^3.6.1",
     "react-dom": "18.2.0",
+    "uuid": "^9.0.0",
     "ws": "^8.13.0"
   },
   "devDependencies": {
