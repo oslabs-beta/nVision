@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import {
   DataGrid,
@@ -8,7 +8,7 @@ import {
   GridValueGetterParams,
   GridColumnVisibilityModel,
 } from '@mui/x-data-grid';
-import useWebSocket from 'react-use-websocket';
+// import useWebSocket from 'react-use-websocket';
 import '../../styles/globals.css';
 import RouteTree from '../components/RouteTree';
 
@@ -61,41 +61,63 @@ export default function DataGridDemo(): any {
     });
 
   // --------WebSockets--------
-  useEffect(() => {
+  const getSocketData = useCallback(async () => {
     const ws = new WebSocket(wsURL);
     ws.onopen = () => {
       console.log('Connected to socket');
       ws.send('FROM THE CLIENT');
     };
-    ws.onmessage = (message) => {
-      console.log(message.data);
+    ws.onmessage = async (message) => {
+      const data = await message;
+      const trace = await JSON.parse(data.data);
+      console.log(trace);
     };
     // on close we should update connection state
     // and retry connection
     ws.onclose = () => {
       console.log('connection lost');
     };
-  }, []);
+  }, [])
 
   useEffect(() => {
-    const fetchSpans = async () => {
-      try {
-        const res = await fetch('/api/getSpans', {
-          mode: 'no-cors',
-          cache: 'no-store',
-        });
-        const data = await res.json();
-        // console.log(data);
-        if (data.traces.length > 0) {
-          setSpans(data.traces);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
+    getSocketData()
+  }, [getSocketData])
 
-    fetchSpans();
-  },[]);
+  // useEffect(() => {
+  //   const ws = new WebSocket(wsURL);
+  //   ws.onopen = () => {
+  //     console.log('Connected to socket');
+  //     ws.send('FROM THE CLIENT');
+  //   };
+  //   ws.onmessage = (message) => {
+  //     console.log(message.data);
+  //   };
+  //   // on close we should update connection state
+  //   // and retry connection
+  //   ws.onclose = () => {
+  //     console.log('connection lost');
+  //   };
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchSpans = async () => {
+  //     try {
+  //       const res = await fetch('/api/getSpans', {
+  //         mode: 'no-cors',
+  //         cache: 'no-store',
+  //       });
+  //       const data = await res.json();
+  //       // console.log(data);
+  //       if (data.traces.length > 0) {
+  //         setSpans(data.traces);
+  //       }
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+
+  //   fetchSpans();
+  // },[]);
 
   return (
     <div className='h-screen'>
