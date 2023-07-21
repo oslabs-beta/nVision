@@ -13,7 +13,7 @@ import ws from 'ws';
 
 // Importing the events module
 import EventEmitter from 'events';
- 
+
 // Initializing instance of EventEmitter to be used
 const emitter = new ws.EventEmitter();
 
@@ -28,7 +28,7 @@ interface ServerError {
 const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 
-let client:ws;
+let client: ws;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,7 +45,7 @@ app.use('/', parseController.getData, (req, res) => {
   if (res.locals.data.length > 0) {
     client.send(JSON.stringify(res.locals.data));
   }
-  return res.status(200)
+  return res.status(200);
 });
 
 //global error handler
@@ -84,7 +84,6 @@ server.on('upgrade', function upgrade(request, socket, head) {
   }
 });
 
-
 wss.on('connection', function connection(ws) {
   console.log(`Recieved a new connection.`);
   client = ws;
@@ -92,7 +91,7 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function message(data, isBinary) {
     console.log('received message', data.toString());
     wss.clients.forEach(function each(client) {
-      if (client !== ws && client.readyState === WebSocket.OPEN) {
+      if (client !== ws && client.readyState === ws.OPEN) {
         client.send(data, { binary: isBinary });
       }
     });
