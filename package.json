@@ -14,8 +14,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/base": "^5.0.0-beta.8",
     "@mui/icons-material": "^5.14.0",
-    "@mui/material": "^5.14.0",
+    "@mui/material": "^5.14.1",
+    "@mui/system": "^5.14.1",
     "@mui/x-data-grid": "^6.9.2",
     "@opentelemetry/api": "^1.4.1",
     "@opentelemetry/auto-instrumentations-web": "^0.33.0",
