@@ -38,13 +38,14 @@ const HomeComponent = () => {
   }
 
   if (pokemon) {
-    const pokemonData = pokemon.map( async(pokemon: PokemonObj) => {
-
-      const pokemonPhoto = await fetchPokemonInfo(pokemon.name)
+    const pokemonData = pokemon.map(async (pokemon: PokemonObj) => {
+      const pokemonPhoto = await fetchPokemonInfo(pokemon.name);
 
       return (
         <div className='card w-48 bg-base-100 shadow-xl m-2 items-center opacity-75'>
-          <p className='m-4 text-xl'>{pokemon.name[0].toUpperCase().concat(pokemon.name.slice(1))}</p>
+          <p className='m-4 text-xl'>
+            {pokemon.name[0].toUpperCase().concat(pokemon.name.slice(1))}
+          </p>
           <img src={pokemonPhoto.sprites.front_default}></img>
           <Link href={`/whos/${pokemon.name}`}>
             <button className='btn btn-primary btn-sm m-4' id={pokemon.name}>
@@ -55,7 +56,11 @@ const HomeComponent = () => {
       );
     });
 
-    return <div className='flex flex-wrap flex-hor justify-center'>{pokemonData}</div>;
+    return (
+      <div className='flex flex-wrap flex-hor justify-center'>
+        {pokemonData}
+      </div>
+    );
   }
 };
 
