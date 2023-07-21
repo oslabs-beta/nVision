@@ -80,7 +80,8 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
 export const parseController = {
   getData: function (req: Request, res: Response, next: NextFunction) {
     const spans = req.body.resourceSpans[0].scopeSpans[0].spans;
-    // console.dir(req.body.resourceSpans[0].scopeSpans[0], {depth: null})
+    console.log('***************NEW SPAN****************')
+    console.dir(req.body.resourceSpans[0].scopeSpans[0], {depth: null})
   
     const spanType = spans[0].attributes.find(
       (attr: { key: string; }) => attr.key === 'next.span_type'

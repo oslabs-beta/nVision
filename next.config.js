@@ -1,5 +1,18 @@
 /** @type {import('next').NextConfig} */
+// const path = require('path');
+// const webpack = require('webpack');
+
 const nextConfig = {
+  // webpack: (config) => {
+  //(config, { isServer }) => {
+  //   config.entry = {
+  //     ...config.entry,
+  //     tracing: './src/tracing.js',
+  //   };
+
+  //   // Other webpack configuration options can be added here
+  //   return config;
+  // },
   images: {
     remotePatterns: [
       {
@@ -11,16 +24,8 @@ const nextConfig = {
     ],
   },
   experimental: {
-    instrumentationHook: true
+    instrumentationHook: true,
   },
-  // rewrites: async () => {
-  //   return [
-  //     {
-  //       source: '/api/getSpans',
-  //       destination: 'http://localhost:8080/getSpans'
-  //     }
-  //   ]
-  // },
   async headers() {
     return [
       {

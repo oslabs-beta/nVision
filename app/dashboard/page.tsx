@@ -70,7 +70,7 @@ export default function DataGridDemo(): any {
     ws.onmessage = async (message) => {
       const data = await message;
       const trace = await JSON.parse(data.data);
-      console.log(trace);
+      console.log(trace[0]);
     };
     // on close we should update connection state
     // and retry connection
@@ -162,7 +162,7 @@ export default function DataGridDemo(): any {
                     },
                   },
                 }}
-                pageSizeOptions={[5]}
+                pageSizeOptions={[5,10]}
                 // checkboxSelection
                 disableRowSelectionOnClick
               />

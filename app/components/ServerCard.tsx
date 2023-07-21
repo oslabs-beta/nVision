@@ -1,24 +1,21 @@
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 interface CardProps {
   name: string;
   deleteFunc?: Function;
 }
 
-const FavoriteCard = (props: CardProps) => {
-  const [pokemonPhoto, setPokemonPhoto] = useState("");
+const fetchPokemonInfo = async (name: string) => {
+  const response = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${name}`
+  );
+  const data = await response.json();
 
-  useEffect(() => {
-    async function fetchPokemonInfo() {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${props.name}`,{ cache: 'no-store' });
-      const data = await response.json();
+  return data.sprites.front_default;
+};
 
-      setPokemonPhoto(data.sprites.front_default);
-    }
-
-    fetchPokemonInfo();
-  },[props.name])
+const ServerCard = async (props: CardProps) => {
+    const pokemonPhoto = await fetchPokemonInfo(props.name)
 
   return (
     <div className='flex flex-col justify-center items-center card w-48 bg-base-100 shadow-xl m-2 opacity-75'>
@@ -43,4 +40,4 @@ const FavoriteCard = (props: CardProps) => {
   );
 };
 
-export default FavoriteCard;
+export default ServerCard;
