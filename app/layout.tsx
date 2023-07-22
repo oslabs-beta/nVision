@@ -1,8 +1,8 @@
 import '../styles/globals.css';
 
 export const metadata = {
-  title: 'nVision demo app',
-  description: 'created by nVision',
+  title: 'nVision',
+  description: 'visualize your requests',
 }
 
 export default function RootLayout({
