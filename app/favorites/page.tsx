@@ -44,7 +44,11 @@ const Favorites = () => {
       </div>
       <div className='flex flex-wrap flex-row justify-center items-center'>
         {favorites.map((pokemon: PokemonObj) => (
-          <FavoriteCard key={uuid()} name={pokemon.name} deleteFunc={deletePokemon} />
+          <FavoriteCard
+            key={uuid()}
+            name={pokemon.name}
+            deleteFunc={deletePokemon}
+          />
         ))}
       </div>
     </div>

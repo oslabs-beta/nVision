@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import FavoriteCard from './FavoriteCard';
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid';
 
 const PokemonList = () => {
   const [pokemon, setPokemon] = useState<[]>([]);
@@ -10,7 +10,7 @@ const PokemonList = () => {
   useEffect(() => {
     const fetchAllPokemon = async () => {
       const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
-      const starterPokemon = await response.json()
+      const starterPokemon = await response.json();
       setPokemon(starterPokemon.results);
     };
 

@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-let isConnected = false; //track connection status
+let isConnected = false;
 
 export const connectToDB = async () => {
   mongoose.set('strictQuery', true);
@@ -14,10 +14,9 @@ export const connectToDB = async () => {
       dbName: 'favorite-pokemon',
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    })
+    });
     isConnected = true;
-    console.log('MongoDB connected')
   } catch (error) {
     console.log(error);
   }
-}
+};

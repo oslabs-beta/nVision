@@ -12,12 +12,6 @@ async function fetchPokemonInfo(name: String) {
   return data;
 }
 
-//stats to display:
-// name from forms[0].name
-// type from types[0].type.name
-// image from spites.front_default;
-// height from height
-
 interface pokemonObj {
   name: String;
 }
@@ -48,29 +42,46 @@ const PokemonInfo = async (context: contextObj) => {
         </Link>
       </div>
       <div className='flex flex-wrap justify-center'>
-      <div className='flex flex-wrap justify-center items-center card w-48 bg-base-100 shadow-xl m-2 opacity-75'>
-        <div className="text-center m-4">
-          <p><b>Name: </b>{charStats.forms[0].name[0].toUpperCase().concat(charStats.forms[0].name.slice(1))} </p>
-          <p><b>Type: </b>{charStats.types[0].type.name}</p>
-          <p><b>Height: </b>{charStats.height}</p>
-          <p><b>Weight: </b>{charStats.weight}</p>
+        <div className='flex flex-wrap justify-center items-center card w-48 bg-base-100 shadow-xl m-2 opacity-75'>
+          <div className='text-center m-4'>
+            <p>
+              <b>Name: </b>
+              {charStats.forms[0].name[0]
+                .toUpperCase()
+                .concat(charStats.forms[0].name.slice(1))}{' '}
+            </p>
+            <p>
+              <b>Type: </b>
+              {charStats.types[0].type.name}
+            </p>
+            <p>
+              <b>Height: </b>
+              {charStats.height}
+            </p>
+            <p>
+              <b>Weight: </b>
+              {charStats.weight}
+            </p>
           </div>
-        <div className='picBox'>
-          <img src={charStats.sprites.front_default}></img>
-        </div>
-        <div>
-        <Link href='../'>
-          <button
-            className='btn btn-success btn-xs m-3'
-            onClick={() => savePokemon(pokemonName)}
-          >
-            Save Pokemon
-          </button>
-          </Link>
-          <Suspense fallback={<Loading />}></Suspense>
+          <div className='picBox'>
+            <img
+              src={charStats.sprites.front_default}
+              alt={`A picture of ${pokemonName}`}
+            ></img>
+          </div>
+          <div>
+            <Link href='../'>
+              <button
+                className='btn btn-success btn-xs m-3'
+                onClick={() => savePokemon(pokemonName)}
+              >
+                Save Pokemon
+              </button>
+            </Link>
+            <Suspense fallback={<Loading />}></Suspense>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
