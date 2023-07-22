@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 // import useWebSocket from 'react-use-websocket';
-import '../../styles/globals.css';
+import '../styles/globals';
 import RouteTree from './components/RouteTree';
 import Table from './components/Table';
 
