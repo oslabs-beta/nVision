@@ -6,12 +6,11 @@ import '../styles/globals.css';
 import RouteTree from './components/RouteTree';
 import Table from './components/Table';
 
-
 const wsURL = 'ws://localhost:8080';
 
 export default function DataGridDemo() {
   const [tab, setTab] = useState('table');
-  const [trace, setTrace] = useState<object[]>([]);
+  const [trace, setTrace] = useState([]);
 
   // --------WebSockets--------
   const getSocketData = useCallback(async () => {
