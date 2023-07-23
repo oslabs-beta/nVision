@@ -21,7 +21,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/pages": ["./app"]
     }
   },
   "ts-node": {
@@ -33,7 +34,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts", "app/dashboard/page.jsx",
   ],
   "exclude": ["node_modules"]
 }

@@ -5,6 +5,8 @@
 
 export default function TestPage() {
     return (
-        <div>Hello</div>
+        <div>
+            <h1>Hello</h1>
+        </div>
     )
 }
