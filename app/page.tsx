@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 // import useWebSocket from 'react-use-websocket';
-import '../styles/globals';
+import '../styles/globals.css';
 import RouteTree from './components/RouteTree';
 import Table from './components/Table';
 
+
 const wsURL = 'ws://localhost:8080';
 
-function DataGridDemo(): any {
+export default function DataGridDemo() {
   const [tab, setTab] = useState('table');
   const [trace, setTrace] = useState<object[]>([]);
 
@@ -68,6 +69,4 @@ function DataGridDemo(): any {
       )}
     </div>
   );
-}
-
-module.exports = DataGridDemo
+};

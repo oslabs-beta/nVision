@@ -11,7 +11,6 @@ export async function GET(request: Request) {
 
   function parseFolders(directory: any, rootObj: any) {
     fs.readdirSync(directory).forEach((file) => {
-      console.log(file)
       const absolute = path.join(directory, file);
 
       if (fs.statSync(absolute).isDirectory()) {
@@ -38,8 +37,8 @@ export async function GET(request: Request) {
   parseFolders(root, files);
 
   // if console.log() after certain depth end up with [Object] displaying instead of actual object - below shows nesting 
-  console.dir(files, { depth: null });
-  console.log('what is file', typeof files)
+  // console.dir(files, { depth: null });
+  // console.log('what is file', typeof files)
 
   return new Response(JSON.stringify(files));
 }
