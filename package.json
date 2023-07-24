@@ -26,8 +26,10 @@
     "eslint-config-next": "13.4.3",
     "express": "^4.18.2",
     "mongoose": "^7.4.0",
-    "next": "^13.4.9",
+    "next": "^13.4.12",
+    "nvision": "file:../npmPackageTest/nvision-0.1.0.tgz",
     "react": "18.2.0",
+    "react-d3-tree": "^3.6.1",
     "react-dom": "18.2.0",
     "uuid": "^9.0.0"
   },

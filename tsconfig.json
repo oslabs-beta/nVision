@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,16 +25,11 @@
       "@/pages": ["./app"]
     }
   },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS",
-    }
-  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts", "app/dashboard/page.jsx",
+    ".next/types/**/*.ts", "app/dashboard/page.jsx", 
   ],
   "exclude": ["node_modules"]
 }
