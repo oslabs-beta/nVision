@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Tree from 'react-d3-tree';
-import '../../styles/custom-tree.css'
+import '../styles/custom-tree.css';
 
 const getFiles = async () => {
   const response = await fetch('/api/fileParser');
@@ -10,7 +10,7 @@ const getFiles = async () => {
   return data;
 };
 
-export default function RouteTree(): any {
+export default function RouteTree():React.JSX.Element {
   const [files, setFiles] = useState();
 
   useEffect(() => {

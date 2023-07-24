@@ -1,53 +1,25 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "target": "ES5",
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "module": "CommonJS",
     "strict": true,
+    "removeComments": true,
+    "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "noEmit": false,
     "esModuleInterop": true,
-    "module": "CommonJS",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "allowSyntheticDefaultImports": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@*": [
-        "./*"
-      ],
-      "@/pages": [
-        "./app"
-      ]
-    }
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
+    "jsx": "react-jsx",
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "server",
-    "globals.d.ts"
-, "app/components/Dashboard.jsx"  ],
+    "globals.d.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "./dist"
   ]
 }

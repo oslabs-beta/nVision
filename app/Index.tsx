@@ -1,16 +1,14 @@
-'use client';
-
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 // import useWebSocket from 'react-use-websocket';
-import '../styles/globals.css';
+import './styles/globals.css';
 import RouteTree from './components/RouteTree';
 import Table from './components/Table';
 
 const wsURL = 'ws://localhost:8080';
 
-export default function DataGridDemo() {
+export default function DataGridDemo():React.JSX.Element {
   const [tab, setTab] = useState('table');
-  const [trace, setTrace] = useState([]);
+  const [trace, setTrace] = useState<object[]>([]);
 
   // --------WebSockets--------
   const getSocketData = useCallback(async () => {

@@ -1,9 +1,7 @@
-'use client';
-import React, { useState, useEffect, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
-import '../../styles/globals.css';
+import '../styles/globals.css';
 
 interface tableProps {
   trace: object[];
@@ -43,7 +41,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-export default function Table(props: tableProps) {
+export default function Table(props: tableProps):React.JSX.Element {
   const { trace } = props;
 
   return (
