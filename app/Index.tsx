@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-// import useWebSocket from 'react-use-websocket';
 import './styles/globals.css';
 import Table from './components/Table';
+import RouteTree from './components/RouteTree';
 
 const wsURL = 'ws://localhost:8080';
 
@@ -59,7 +59,8 @@ export default function DataGridDemo():React.JSX.Element {
           <Table trace={trace} />
         </div>
       ) : (
-        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content border-4 h-[80vh] w-[70vw]'>
+          <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content border-4 h-[80vh] w-[70vw]'>
+            <RouteTree/>
         </div>
       )}
     </div>
