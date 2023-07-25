@@ -9,7 +9,6 @@ export default async function fileParser(rootFolder: String): Promise<object>{
 
   async function parseFolders(directory: String, rootObj: any) {
 
-    console.log("function has started")
     fs.readdirSync(directory).forEach((file:any) => {
       const absolute = path.join(directory, file);
       console.log("in the parse function", absolute)
@@ -36,8 +35,6 @@ export default async function fileParser(rootFolder: String): Promise<object>{
   }
 
   await parseFolders(rootFolder, files);
-
-  console.log('parse folder files:', files)
 
   return files;
 }
