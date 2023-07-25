@@ -4,12 +4,12 @@ import dark from '../assets/dark.svg';
 
 const Navbar: Component = () => {
   return (
-    <div class='flex justify-between bg-indigo-500 px-5 py-3'>
+    <div class='flex justify-between bg-indigo-500 px-5 py-8 h-[5vh] sticky top-0 z-[99]'>
       <div id='nav-links' class='flex items-center'>
         <a class='mr-4' href='#nvision'>
           <img src={logo} class='w-10 h-10' alt='logo' />
         </a>
-        <a class='mr-4' href='#docs'>Docs</a>
+        <a class='mr-4' href='#features'>Features</a>
         <a class='mr-4' href='#link2'>Link 2</a>
         <a class='mr-4' href='#link3'>Link 3</a>
       </div>

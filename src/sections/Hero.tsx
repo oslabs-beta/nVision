@@ -23,6 +23,8 @@ const Hero: Component = () => {
       <div class='mockup-code'>
         <pre data-prefix='$'>
           <code>npm i @nvision/dashboard</code>
+        </pre>
+        <pre data-prefix='$'>
           <code>npm i @nvision/tree</code>
         </pre>
       </div>
