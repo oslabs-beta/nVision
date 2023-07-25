@@ -1,0 +1,14 @@
+{
+  "name": "fileparser",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build:tsc": "tsc --build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5"
+  },
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
+}
