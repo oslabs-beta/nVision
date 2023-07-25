@@ -1,5 +1,5 @@
 import Dashboard from './Dashboard';
-// import fileParser from './api/fileParser/route'
+import fileParser from './fileParser/fileparser';
 export { Dashboard };
-// export { fileParser };
+export { fileParser };
 export default Dashboard;
