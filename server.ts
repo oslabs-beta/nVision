@@ -1,19 +1,34 @@
-import express, {
-  Request,
-  Response,
-  NextFunction,
-  RequestHandler,
-} from 'express';
-import { parseController } from './parseController';
-import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
-import fs from 'fs';
-import path from 'path';
-import ws from 'ws';
-import EventEmitter from 'events';
+// import express, {
+//   Request,
+//   Response,
+//   NextFunction,
+//   RequestHandler,
+// } from 'express';
+// import { parseController } from './parseController';
+// import { registerInstrumentations } from '@opentelemetry/instrumentation';
+// import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
+// import ws from 'ws';
+// import EventEmitter from 'events';
 
 // Importing the events module
 const runServer = () => {
+  const {
+    express,
+    Request,
+    Response,
+    NextFunction,
+    RequestHandler,
+  } = require('express');
+  const { parseController } = require('./parseController');
+  const {
+    registerInstrumentations,
+  } = require('@opentelemetry/instrumentation');
+  const {
+    HttpInstrumentation,
+  } = require('@opentelemetry/instrumentation-http');
+  const ws = require('ws');
+  const EventEmitter = require('events');
+
   // Initializing instance of EventEmitter to be used
   const emitter = new ws.EventEmitter();
 

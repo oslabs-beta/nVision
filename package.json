@@ -10,6 +10,7 @@
     "server": "ts-node --project tsconfig.server.json server/server.ts",
     "server:nodemon": "nodemon --exec ts-node server/server.ts"
   },
+  "main": "server.ts",
   "files": [
     "instrumentation.js",
     "instrumentation.node.js",
