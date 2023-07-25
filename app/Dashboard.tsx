@@ -5,7 +5,13 @@ import RouteTree from './components/RouteTree';
 
 const wsURL = 'ws://localhost:8080';
 
-export default function DataGridDemo():React.JSX.Element {
+interface DashboardProps {
+  info: Object
+}
+
+export default function DataGridDemo(props: DashboardProps):React.JSX.Element {
+
+  const { info } = props
   const [tab, setTab] = useState('table');
   const [trace, setTrace] = useState<object[]>([]);
 
@@ -60,7 +66,7 @@ export default function DataGridDemo():React.JSX.Element {
         </div>
       ) : (
           <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content border-4 h-[80vh] w-[70vw]'>
-            <RouteTree/>
+            <RouteTree info={info}/>
         </div>
       )}
     </div>

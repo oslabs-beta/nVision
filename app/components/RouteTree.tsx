@@ -2,29 +2,24 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/custom-tree.module.css';
 import { Tree } from 'react-d3-tree';
 
-const getFiles = async () => {
-  const response = await fetch('/api/fileParser');
-  const data = await response.json();
-  return data;
-};
+interface RouteTreeProps {
+  info: Object; 
+}
 
-export default function RouteTree():React.JSX.Element {
-  const [files, setFiles] = useState();
+export default function RouteTree(props: RouteTreeProps): React.JSX.Element {
+  const { info } = props
+  const [files, setFiles] = useState<any>();
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await getFiles();
-      setFiles(data);
-    };
-    getData();
+    setFiles(info);
   }, []);
 
   return (
     <div id='treeWrapper' style={{ width: '100%', height: '100%' }}>
       {files && (
         <Tree
-          translate={{x:100, y:window.innerHeight/2}}
-          zoom={.5}
+          translate={{ x: 100, y: window.innerHeight / 2 }}
+          zoom={0.5}
           data={files}
           rootNodeClassName='node__root'
           branchNodeClassName='node__branch'
