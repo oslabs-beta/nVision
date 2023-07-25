@@ -1,7 +1,8 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import {Dashboard} from 'nvision'
+import Dashboard from 'nvision';
+
 
 // const Dashboard = dynamic(() => import('nvision'), { ssr: false });
 
