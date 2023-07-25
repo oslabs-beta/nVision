@@ -1,8 +1,5 @@
-'use client';
-
 import { useEffect, useState } from 'react';
-// import Tree from 'react-d3-tree';
-import '../styles/custom-tree.css';
+import styles from '../styles/custom-tree.module.css';
 import { Tree } from 'react-d3-tree';
 
 const getFiles = async () => {

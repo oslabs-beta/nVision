@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import type {} from '@mui/x-data-grid/themeAugmentation';
-import '../styles/globals.css';
+import styles from '../styles/globals.module.css';
 
 interface tableProps {
   trace: object[];

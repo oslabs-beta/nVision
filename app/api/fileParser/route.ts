@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 
-export async function GET(request: Request) {
+export default async function GET(request: Request) {
   const root = './app';
 
   // if folder make an object

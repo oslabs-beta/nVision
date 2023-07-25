@@ -1,13 +1,14 @@
 {
   "name": "nvision",
   "version": "0.1.0",
-  "main": "dist/bundle.js",
+  "main": "dist/nvision.js",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "webpack-cli ./app/nvision.tsx --config webpack.config.js",
+    "build:tsc": "tsc --build"
   },
   "files": [
-    "dist/bundle.js"
+    "dist/*"
   ],
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.22.9",

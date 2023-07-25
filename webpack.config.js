@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: 'production',
-  entry: './app/Index.tsx',
+  // entry: './app/nvision.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),

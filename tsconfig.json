@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES6",
     "outDir": "./dist",
     "experimentalDecorators": true,
-    "module": "CommonJS",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "strict": true,
     "removeComments": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
     "jsx": "react-jsx",
   },
   "include": [
-    "globals.d.ts",
-    "app/**/*.ts",
-    "app/**/*.tsx",
+    "app/**/*",
+    "index.d.ts",
+    "globals.d.ts"
    ],
   "exclude": [
     "node_modules",
