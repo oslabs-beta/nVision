@@ -1,8 +1,20 @@
-import { NextResponse } from "next/server";
-import { fileParser } from "nvision";
+import fileParser from 'fileparser';
+import path from 'path'
 
-export async function GET() {
-  const files = await fileParser();
-  console.log(files)
-  return new NextResponse(JSON.stringify(files));
-};
+export async function GET(request: Request) {
+    try {
+        const appDirPath = path.join(process.cwd(), 'app')
+        
+        // (__dirname, "../../../../../../../", "app")
+        
+        const results = await fileParser(appDirPath)
+
+        console.log('file parser results:',results)
+
+        return new Response(JSON.stringify(results))
+    }
+    catch(e) {
+        console.error(e)
+    }
+}
+
