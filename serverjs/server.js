@@ -1,60 +1,25 @@
-// import express, {
-//   Request,
-//   Response,
-//   NextFunction,
-//   RequestHandler,
-// } from 'express';
+// import express from 'express';
 // import { parseController } from './parseController';
-// import { registerInstrumentations } from '@opentelemetry/instrumentation';
-// import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
-// import ws from 'ws';
-// import EventEmitter from 'events';
+// import ws, {WebSocketServer} from 'ws';
+// import { Socket } from 'net';
+// import { IncomingMessage } from 'http';
 
-// Importing the events module
-const runServer = () => {
-  const {
-    express,
-    Request,
-    Response,
-    NextFunction,
-    RequestHandler,
-  } = require('express');
-  const { parseController } = require('./parseController');
-  const {
-    registerInstrumentations,
-  } = require('@opentelemetry/instrumentation');
-  const {
-    HttpInstrumentation,
-  } = require('@opentelemetry/instrumentation-http');
+
+const startServer = () => {
+  const express = require('express');
+  const parseController = require('./parseController');
   const ws = require('ws');
-  const EventEmitter = require('events');
 
   // Initializing instance of EventEmitter to be used
-  const emitter = new ws.EventEmitter();
-
   const wss = new ws.Server({ noServer: true });
 
-  interface ServerError {
-    log: string;
-    status: number;
-    message: { err: string };
-  }
-
-  const PORT = parseInt(process.env.PORT || '8080');
+  const PORT = 8080;
   const app = express();
 
-  let client: ws;
+  let client;
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
-
-  app.get('/getSpans', parseController.fetchSpans, (req, res) => {
-    return res.status(200).json(res.locals.traces);
-  });
-
-  app.get('/clearSpans', parseController.clearSpans, (req, res) => {
-    return res.status(200).json('hello');
-  });
 
   app.use('/', parseController.getData, (req, res) => {
     if (res.locals.data.length > 0) {
@@ -66,7 +31,7 @@ const runServer = () => {
   //global error handler
   app.use(
     '/',
-    (err: ServerError, req: Request, res: Response, next: NextFunction) => {
+    (err, req, res, next) => {
       const defaultErr = {
         log: 'Express error handler caught unknown middleware error',
         status: 400,
@@ -84,7 +49,7 @@ const runServer = () => {
 
   //---------------------------------------- WEBSOCKETS ----------------------------------------
   //upgrade
-  server.on('upgrade', function upgrade(request, socket, head) {
+  server.on('upgrade', (request, socket, head) => {
     try {
       wss.handleUpgrade(request, socket, head, function done(ws) {
         wss.emit('connection', ws, request);
@@ -114,4 +79,6 @@ const runServer = () => {
     });
   });
 };
-module.exports = runServer;
+
+module.exports = startServer;
+// export default startServer;

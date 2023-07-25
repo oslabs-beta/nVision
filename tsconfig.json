@@ -1,28 +1,18 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
     "incremental": true,
     "allowSyntheticDefaultImports": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "declaration": true,
   },
   "ts-node": {
     "compilerOptions": {
@@ -30,10 +20,10 @@
     }
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
+    "server/**/*",
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "./dist"
+  ]
 }
