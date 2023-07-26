@@ -12,11 +12,11 @@ const Navbar: Component = () => {
         <a class='mr-4' href='#features'>
           Features
         </a>
+        <a class='mr-4' href='#Demo'>
+          Demo
+        </a>
         <a class='mr-4' href='#Team'>
           Team
-        </a>
-        <a class='mr-4' href='#link3'>
-          Link 3
         </a>
       </div>
       <div id='nav-icons' class='flex items-center'>
