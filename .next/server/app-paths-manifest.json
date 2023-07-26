@@ -1,0 +1,8 @@
+{
+  "/page": "app/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/favorites/page": "app/favorites/page.js",
+  "/whos/[name]/page": "app/whos/[name]/page.js",
+  "/api/favorites/route": "app/api/favorites/route.js",
+  "/api/favorites/[name]/route": "app/api/favorites/[name]/route.js"
+}

@@ -1,7 +1,5 @@
-// import tableGif from '';
+import tableGif from '../assets/table.gif';
 // import treeGif from '';
-import test1 from '../assets/Bennett.png';
-import test2 from '../assets/DarkIsaac.png';
 import { Accessor } from 'solid-js';
 
 interface DemoGifProps {
@@ -9,13 +7,12 @@ interface DemoGifProps {
 }
 
 const DemoGif = (props: DemoGifProps) => {
-  //   const gifs = [tableGif, treeGif];
-  const tests = [test1, test2];
+  const gifs = [tableGif];
   const { gif } = props;
   return (
     <div>
       <h2> GIF: {gif()}</h2>
-      <img src={tests[gif()]} />
+      <img src={gifs[gif()]} />
       {/* <img src={gifs[gif]}></img> */}
     </div>
   );
