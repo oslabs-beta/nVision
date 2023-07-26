@@ -2,7 +2,7 @@
 
 This is Nextjs observability tool by nVision. 
 
-_Note: this package is compatible with Next.js App Router
+_Note: this package is compatible with Next.js App Router_
 
 ## Get Started 
 
