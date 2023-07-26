@@ -1,7 +1,6 @@
 {
-  "name": "nvision-server",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@nvision/server",
+  "version": "1.0.0",
   "main": "dist/startServer.js",
   "scripts": {
     "build:tsc": "tsc --build"
