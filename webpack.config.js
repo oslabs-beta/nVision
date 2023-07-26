@@ -1,8 +1,12 @@
 const path = require("path");
+const tailwindcss = require('tailwindcss');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {
   mode: 'production',
   // entry: './app/nvision.tsx',
+  devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -37,15 +41,37 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-        // resolve: {
-        //   extensions: ['.tsx', '.ts', '.js']
-        // }
+        resolve: {
+          extensions: ['.tsx', '.ts', '.js']
+        }
       },
       {
         test: /\.css$/i,
         include: path.resolve(__dirname, 'app/styles'),
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      }
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {importLoaders: 1},
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                config: path.resolve(__dirname, 'postcss.config.js'),
+              },
+            },
+          },
+        ],
+      },
+      // {
+      //   test: /\.css$/i,
+      //   include: path.resolve(__dirname, 'app/styles'),
+      //   use: ['style-loader', 'css-loader', 'postcss-loader'],
+      // }
     ],
   },
   resolve: {
@@ -55,5 +81,7 @@ module.exports = {
     'react': 'react',
     'react-dom': 'react-dom',
     'd3': 'd3',
+    '@emotion/styled': '@emotion/styled',
+    '@emotion/react': '@emotion/react'
   }
 };

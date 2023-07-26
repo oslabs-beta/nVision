@@ -12,12 +12,18 @@
     "forceConsistentCasingInFileNames": true,
     "declaration": true,
     "jsx": "react-jsx",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "plugins": [{ 
+      "name": "typescript-plugin-css-modules",
+      "option": {
+        "postcssOptions": {
+          "useConfig": true
+        },
+      }
+       }]
   },
   "include": [
     "app/**/*",
-    "index.d.ts",
-    "globals.d.ts"
+    "styles.d.ts"
     ],
   "exclude": [
     "node_modules",

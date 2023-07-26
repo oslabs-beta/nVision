@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import styles from '../styles/custom-tree.module.css';
 import { Tree } from 'react-d3-tree';
+import treeStyle from '../styles/custom-tree.module.css';
+
+const { treeWrapper } = treeStyle;
 
 interface RouteTreeProps {
   info: Object; 
@@ -15,15 +17,15 @@ export default function RouteTree(props: RouteTreeProps): React.JSX.Element {
   }, []);
 
   return (
-    <div id='treeWrapper' style={{ width: '100%', height: '100%' }}>
+    <div id='treeWrapper' className={treeWrapper}>
       {files && (
         <Tree
           translate={{ x: 100, y: window.innerHeight / 2 }}
           zoom={0.5}
           data={files}
-          rootNodeClassName='node__root'
-          branchNodeClassName='node__branch'
-          leafNodeClassName='node__leaf'
+          rootNodeClassName={treeStyle.node__root}
+          branchNodeClassName={treeStyle.node__branch}
+          leafNodeClassName={treeStyle.node__leaf}
           depthFactor={300}
         />
       )}

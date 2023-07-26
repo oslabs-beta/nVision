@@ -1,11 +1,16 @@
 .node__root > circle {
-    fill: red;
+  fill: red;
 }
 
 .node__branch > circle {
-    fill: yellow;
+  fill: yellow;
 }
 
 .node__leaf > circle {
-    fill: green;
+  fill: green;
+}
+
+.treeWrapper {
+  width: 100%;
+  height: 100%;
 }

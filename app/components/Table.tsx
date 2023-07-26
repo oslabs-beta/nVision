@@ -1,11 +1,13 @@
 import Box from '@mui/material/Box';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import type {} from '@mui/x-data-grid/themeAugmentation';
-import styles from '../styles/globals.module.css';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import styles from '../styles/global.module.css'
 
 interface tableProps {
   trace: object[];
 }
+
+const { grid } = styles;
+
 //creating columns for table
 const columns: GridColDef[] = [
   { field: 'url', headerName: 'Route/URL', width: 250 },
@@ -45,7 +47,7 @@ export default function Table(props: tableProps):React.JSX.Element {
   const { trace } = props;
 
   return (
-    <div className='flex justify-end p-4'>
+    <div className={grid}>
       <Box
         sx={{
           height: '70vh',

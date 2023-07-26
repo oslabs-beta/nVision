@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
-import styles from './styles/globals.module.css'
 import Table from './components/Table';
 import RouteTree from './components/RouteTree';
+import styles from './styles/global.module.css';
+
+const { h_screen, tab, active_tab, table, table_inner, table_header, tree } = styles;
 
 const wsURL = 'ws://localhost:8080';
 
@@ -9,8 +11,7 @@ interface DashboardProps {
   info: Object
 }
 
-export default function DataGridDemo(props: DashboardProps):React.JSX.Element {
-
+export default function DataGridDemo(props: DashboardProps): React.JSX.Element {
   const { info } = props
   const [tab, setTab] = useState('table');
   const [trace, setTrace] = useState<object[]>([]);
@@ -42,30 +43,30 @@ export default function DataGridDemo(props: DashboardProps):React.JSX.Element {
   }, [getSocketData]);
 
   return (
-    <div className='h-screen'>
+    <div className={h_screen}>
       <button
-        className={tab === 'table' ? 'btn-1  bg-gray-300' : 'btn-1'}
+        className={tab === 'table' ? active_tab : tab}
         onClick={() => setTab('table')}
       >
         Table
       </button>
       <button
-        className={tab === 'tree' ? 'btn-1 ml-1 bg-gray-300' : 'btn-1 ml-1'}
+        className={tab === 'tree' ? active_tab : tab}
         onClick={() => setTab('tree')}
       >
         Tree
       </button>
       {tab === 'table' ? (
-        <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content p-6 border-4'>
-          <div className='flex justify-center'>
-            <h2 className='mt-5 mb-2 text-2xl font-bold text-center'>
+        <div className={table}>
+          <div className={table_inner}>
+            <h2 className={table_header}>
               Network Activity
             </h2>
           </div>
           <Table trace={trace} />
         </div>
       ) : (
-          <div className='bg-gray-300[.4] flex flex-col justify-center content-center box-content border-4 h-[80vh] w-[70vw]'>
+          <div className={tree}>
             <RouteTree info={info}/>
         </div>
       )}
