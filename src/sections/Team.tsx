@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import isaac from '../assets/Isaac.png';
+import isaac from '../assets/LightIsaac.png';
 import jiyoung from '../assets/Jiyoung.png';
 import sunny from '../assets/Sunny.png';
 import bennett from '../assets/Bennett.png';
@@ -14,7 +14,7 @@ import github from '../assets/github.svg';
 import linkedin from '../assets/linkedin.svg';
 const Team: Component = () => {
   return (
-    <div id='Team' class='pt-[5vh] h-[95vh]'>
+    <div id='Team' class=' p-20'>
       <h2 class='text-center text-5xl italic p-10'>Meet The Team!</h2>
       <div class=' mx-auto flex '>
         <div
@@ -27,7 +27,7 @@ const Team: Component = () => {
           <p class='flex justify-center text-2xl font-extrabold'>Sunny</p>
           {/* LINKS AND ICONS */}
           <div class='flex justify-center items-center'>
-            {/* Github img / link*/}
+            {/* GIthub img / link*/}
             <a
               class='object-contain h-18 w-18'
               href='https://github.com/xsunnibunnix'
@@ -82,7 +82,7 @@ const Team: Component = () => {
               <img src={github} />
             </a>
             {/* Linkedin img / link */}
-            <a>
+            <a href='https://www.linkedin.com/in/thirdisaac/'>
               <img src={linkedin} />
             </a>
           </div>

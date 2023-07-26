@@ -5,6 +5,7 @@ import Features from './sections/Features';
 import Team from './sections/Team';
 import setMode from "./setMode";
 
+import Demo from './sections/Demo';
 const App: Component = () => {
   const { darkMode } = setMode;
 
@@ -16,6 +17,7 @@ const App: Component = () => {
       <div class="bg-indigo-100 dark:bg-[#17191b] px-20">
         <Hero />
         <Features />
+        <Demo />
         <Team />
       </div>
     </div>
