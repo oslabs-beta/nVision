@@ -14,7 +14,7 @@ import github from '../assets/github.svg';
 import linkedin from '../assets/linkedin.svg';
 const Team: Component = () => {
   return (
-    <div id='Team' class=' p-20'>
+    <div id='Team' class='pt-[5vh] h-[95vh]'>
       <h2 class='text-center text-5xl italic p-10'>Meet The Team!</h2>
       <div class=' mx-auto flex '>
         <div
@@ -27,7 +27,7 @@ const Team: Component = () => {
           <p class='flex justify-center text-2xl font-extrabold'>Sunny</p>
           {/* LINKS AND ICONS */}
           <div class='flex justify-center items-center'>
-            {/* GIthub img / link*/}
+            {/* Github img / link*/}
             <a
               class='object-contain h-18 w-18'
               href='https://github.com/xsunnibunnix'
