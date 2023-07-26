@@ -21,9 +21,9 @@ export default function RouteTree(props: RouteTreeProps): React.JSX.Element {
           translate={{ x: 100, y: window.innerHeight / 2 }}
           zoom={0.5}
           data={files}
-          rootNodeClassName={styles.node__root}
-          branchNodeClassName={styles.node__branch}
-          leafNodeClassName={styles.node__leaf}
+          rootNodeClassName='node__root'
+          branchNodeClassName='node__branch'
+          leafNodeClassName='node__leaf'
           depthFactor={300}
         />
       )}
