@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import isaac from '../assets/Isaac.png';
+import isaac from '../assets/LightIsaac.png';
 import jiyoung from '../assets/Jiyoung.png';
 import sunny from '../assets/Sunny.png';
 import bennett from '../assets/Bennett.png';
@@ -82,7 +82,7 @@ const Team: Component = () => {
               <img src={github} />
             </a>
             {/* Linkedin img / link */}
-            <a>
+            <a href='https://www.linkedin.com/in/thirdisaac/'>
               <img src={linkedin} />
             </a>
           </div>
