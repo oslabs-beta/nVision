@@ -48,7 +48,7 @@ const Feedback: Component = () => {
         ></textarea>
       </div>
       <button
-        class='btn btn-xs btn-neutral float-right mt-2'
+        class='block btn btn-xs btn-neutral'
         onClick={submitFeedback}
         disabled
       >

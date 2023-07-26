@@ -111,7 +111,7 @@ const Team: Component = () => {
           </div>
         </div>
         <div
-          id='Bennet'
+          id='Bennett'
           class='border border-purple-900 rounded-lg outline-white p-3'
         >
           {/* Portrait */}
