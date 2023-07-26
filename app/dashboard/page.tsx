@@ -14,8 +14,8 @@ export default async function Dashboard() {
   const result = await getFiles();
 
   return (
-    <div>
+    <>
       <Wrapper info={result} />
-    </div>
+    </>
   );
 }
