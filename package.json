@@ -1,7 +1,6 @@
 {
-  "name": "nvision-trace",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@nvision/trace",
+  "version": "1.0.0",
   "main": "dist/startTrace.js",
   "scripts": {
     "build:tsc": "tsc --build"
