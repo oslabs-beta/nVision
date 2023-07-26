@@ -1,6 +1,4 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
-import fs from 'fs';
-import path from 'path';
 
 interface parseController {
   getData: RequestHandler,
@@ -36,10 +34,6 @@ const parseFetchRoute = (span:[fetchSpanData], data:object[]) => {
     duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
   data.push(spanDataObj)
-  // const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
-  // const traceData = JSON.parse(traces);
-  // traceData.traces.push(spanDataObj);
-  // fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
   return;
 }
 
@@ -62,10 +56,6 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
     duration: (endTimeUnixNano - startTimeUnixNano) / 10 ** 6,
   }
   data.push(spanDataObj);
-  // const traces = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
-  // const traceData = JSON.parse(traces);
-  // traceData.traces.push(spanDataObj);
-  // fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify(traceData));
   return;
 }
 
@@ -80,7 +70,6 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
 export const parseController = {
   getData: function (req: Request, res: Response, next: NextFunction) {
     const spans = req.body.resourceSpans[0].scopeSpans[0].spans;
-    // console.dir(req.body.resourceSpans[0].scopeSpans[0], {depth: null})
   
     const spanType = spans[0].attributes.find(
       (attr: { key: string; }) => attr.key === 'next.span_type'
@@ -93,24 +82,9 @@ export const parseController = {
       case 'BaseServer.handleRequest':
         parseBaseServer(spans, res.locals.data);
         break;
-      // case 'AppRender.getBodyResult':
-      //   // parseBaseServer(spans, res.locals.data);
-      //   break;
       default:
         return next();
     }
-    return next();
-  },
-  fetchSpans: function (req: Request, res: Response, next: NextFunction) {
-    const traceData = fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8');
-    const traces = JSON.parse(traceData);
-    // console.log(traces)
-    res.locals.traces = traces;
-    return next();
-  },
-  clearSpans: function (req: Request, res: Response, next: NextFunction) {
-    console.log('in clearSpans')
-    fs.writeFileSync(path.join(__dirname, 'data.json'), JSON.stringify({ traces: [] }));
     return next();
   }
 };

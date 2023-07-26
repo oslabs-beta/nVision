@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "outDir": "./dist",
     "module": "CommonJS",
     "moduleResolution": "node",
@@ -11,7 +11,6 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "incremental": true,
-    "allowSyntheticDefaultImports": true,
     "declaration": true,
   },
   "ts-node": {
