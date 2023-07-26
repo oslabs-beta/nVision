@@ -1,4 +1,4 @@
-import fileParser from 'fileparser';
+import fileParser from 'nvision-fileparser';
 import path from 'path'
 
 export async function GET(request: Request) {
