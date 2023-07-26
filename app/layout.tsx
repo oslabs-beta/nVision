@@ -1,7 +1,4 @@
 import '../styles/globals.css';
-// import startServer from 'nvision-server/startServer';
-
-// startServer();
 
 export const metadata = {
   title: 'nVision demo app',
