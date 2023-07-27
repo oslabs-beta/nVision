@@ -13,9 +13,6 @@
   "scripts": {
     "build:tsc": "tsc --build"
   },
-  "bin": {
-    "nvision-server": "makefile.js"
-  },
   "files": [
     "dist/*",
     "makefile.js",
