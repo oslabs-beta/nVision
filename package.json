@@ -2,6 +2,14 @@
   "name": "@nvision/fileparser",
   "version": "1.0.0",
   "main": "index.ts",
+  "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
+  "keywords": ["nextjs", "next", "react", "devtool"],
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oslabs-beta/nVision"
+  },
   "scripts": {
     "build:tsc": "tsc --build"
   },
