@@ -16,6 +16,7 @@ interface fetchSpanData {
   attributes: [any],
 }
 
+// Parse HTTP fetch span data
 const parseFetchRoute = (span:[fetchSpanData], data:object[]) => {
   const fetchSpanData = span[0];
   const { traceId, spanId, parentSpanId, kind, startTimeUnixNano, endTimeUnixNano, attributes } = fetchSpanData;
@@ -37,6 +38,7 @@ const parseFetchRoute = (span:[fetchSpanData], data:object[]) => {
   return;
 }
 
+// Parse API route span data
 const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
   const serverSpanData = span[0];
   const { traceId, spanId, parentSpanId, kind, startTimeUnixNano, endTimeUnixNano, attributes } = serverSpanData;

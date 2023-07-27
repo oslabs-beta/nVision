@@ -50,10 +50,12 @@ const server = app.listen(PORT, () => {
 });
 
 
-//--------------------- WEBSOCKETS ---------------------
+//--------------------- Websocket Connection ---------------------
+
+// Initialize new websocket to be connected through existing Express server connection
 const wss: WebSocketServer = new ws.Server({ noServer: true });
 
-//handle upgrade to websocket
+//Handle upgrade to websocket
 server.on('upgrade', (request:IncomingMessage, socket:Socket, head: any) => {
   try {
     wss.handleUpgrade(request, socket, head, function done(ws) {
@@ -67,10 +69,9 @@ server.on('upgrade', (request:IncomingMessage, socket:Socket, head: any) => {
 });
 
 wss.on('connection', function connection(ws) {
-  console.log(`Recieved a new connection.`);
+  console.log(`Server recieved a new connection.`);
   client = ws;
   ws.on('message', function message(data, isBinary) {
-    console.log('received message', data.toString());
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === ws.OPEN) {
         client.send(data, { binary: isBinary });
@@ -80,7 +81,7 @@ wss.on('connection', function connection(ws) {
 
   // handle close event
   ws.on('close', () => {
-    console.log('closed', 'bye bye');
+    console.log('Connection closed.', 'bye bye.');
   });
 });
 
