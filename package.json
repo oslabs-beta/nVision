@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "nvision": "node --require ./nvisionServer.js & next dev",
     "dev": "next dev",
-    "dev2": "node --require ./nvisionServer.js & ./node_modules/.bin/next dev",
     "build": "next build",
     "start": "next start",
     "server": "node server.js && npm run start",
