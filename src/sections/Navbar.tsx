@@ -1,10 +1,14 @@
 import type { Component } from 'solid-js';
 import logo from '../assets/logo.svg';
 import dark from '../assets/dark.svg';
+import light from '../assets/light.svg';
+import setMode from '../setMode';
 
 const Navbar: Component = () => {
+  const { toggleDarkMode } = setMode;
+
   return (
-    <div class='flex justify-between bg-indigo-500 px-5 py-8 h-[5vh] sticky top-0 z-[99]'>
+    <div class='flex justify-between bg-base px-5 py-8 h-[5vh] sticky top-0 z-[99] shadow-2xl'>
       <div id='nav-links' class='flex items-center'>
         <a class='mr-4' href='#nvision'>
           <img src={logo} class='w-10 h-10' alt='logo' />
@@ -20,22 +24,14 @@ const Navbar: Component = () => {
         </a>
       </div>
       <div id='nav-icons' class='flex items-center'>
-        <div id='mode-button' class='dropdown dropdown-end dropdown-bottom'>
-          <label tabIndex={0}>
-            <img src={dark} class='w-8 h-8' alt='dark-mode' />
-          </label>
-          <ul
-            tabIndex={0}
-            class='dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'
-          >
-            <li>
-              <a>Light Mode</a>
-            </li>
-            <li>
-              <a>Dark Mode</a>
-            </li>
-          </ul>
-        </div>
+        <img src={dark} class='w-6 h-6' alt='dark-mode' />
+        <input
+          type='checkbox'
+          class="toggle toggle-primary"
+          checked
+          onChange={toggleDarkMode}
+        />
+        <img src={light} class='w-7 h-7' alt='light-mode' />
       </div>
     </div>
   );
