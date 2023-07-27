@@ -1,20 +1,24 @@
 import type { Component } from 'solid-js';
+import logo from '../assets/logo.svg';
 
 const Hero: Component = () => {
   return (
-    <div class='h-[95vh]'>
-      <div class='hero'>
-        <div class='hero-content flex-col lg:flex-row-reverse'>
+    <div
+      id='nvision'
+      class='min-h-[93vh] flex justify-center items-center mt-[8vh]'
+    >
+      <div class='bg-base/[.5] rounded-xl px-10 py-16 dark:bg-dark/[.5]'>
+        <div class='hero-content flex-col lg:flex-row'>
+          <img src={logo} class='w-1/3' />
           <div>
-            <h1 class='mb-5 text-5xl font-bold'>nVision</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <h1 class='text-6xl font-extrabold'>nVision</h1>
+            <p class='mb-5 mt-2 italic text-xl font-bold'>A developer tool for Next.js</p>
+            <p class='pr-8 text-lg'>
+              nVision is an open-source developer tool for Next.js applications.
+              Designed to fully leverage the power of Server-Side rendering that
+              Next.js offers. Gain a new perspective of your application through
+              active network observability and visualization of your application
+              architecture.
             </p>
           </div>
         </div>

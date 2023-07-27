@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'base': '#adadeb',
+        'dark': '#1e1e20'
       },
       animation: {
         text: 'text 5s ease infinite',

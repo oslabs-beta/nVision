@@ -10,6 +10,7 @@ import darkSunny from '../assets/dark/DarkSunny.png';
 import darkBennett from '../assets/dark/DarkBennett.png';
 import darkCaitlin from '../assets/dark/DarkCaitlin.png';
 import hoverIsaac from '../assets/hoverIsaac.png';
+import hoverCaitlin from '../assets/hoverCaitlin.png';
 import setMode from '../setMode';
 
 import githubLight from '../assets/light/github.svg';
@@ -33,6 +34,7 @@ const teamInfo: any = {
     dark: darkCaitlin,
     githubLink: 'https://github.com/codeFromCO',
     linkedinLink: 'https://www.linkedin.com/in/caitlin-odonohue/',
+    hover: hoverCaitlin,
   },
   Isaac: {
     light: isaac,
@@ -62,24 +64,27 @@ const TeamCard: Component<TeamCardProps> = ({ name }: TeamCardProps) => {
 
   return (
     <div
-      id={name}
-      class='border border-purple-900 rounded-lg outline-white px-10 py-5'
+      class='border border-purple-900 rounded-lg outline-white w-1/6 flex flex-wrap justify-center'
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div class='h-[160px] w-[120px]'>
+      <div class='h-40 w-32'>
         {hovered() && hover ? (
-          <img src={hover} />
+          <img class='h-40 w-32' src={hover} />
         ) : (
-          <img src={darkMode() ? dark : light} />
+          <img class='h-40 w-32' src={darkMode() ? dark : light} />
         )}
       </div>
-      <p class='flex justify-center text-2xl font-extrabold'>{name}</p>
-      <div class='flex justify-center items-center'>
-        <a class='object-contain h-[20px] w-[20px]' target='_blank' href={githubLink}>
+      <p class='text-2xl font-extrabold w-full text-center'>{name}</p>
+      <div class='flex w-full justify-evenly items-center'>
+        <a
+          class='object-contain h-[20px] w-[20px]'
+          target='_blank'
+          href={githubLink}
+        >
           <img src={darkMode() ? githubDark : githubLight} />
         </a>
-        <a target='_blank' href={linkedinLink} >
+        <a target='_blank' href={linkedinLink}>
           <img src={darkMode() ? linkedinDark : linkedinLight} />
         </a>
       </div>

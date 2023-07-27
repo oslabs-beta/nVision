@@ -18,7 +18,7 @@ const FeatureCard: Component<CardProps> = ({
     <>
       <div class='max-w-xs'>
         <div class='avatar mx-[15px] mt-[20px]'>
-          <div class='w-32 rounded-xl bg-base/[.5] p-4 shadow-sm border-box border-2 border-solid border-white/[.75] dark:bg-[#252529] dark:opacity-100 dark: border-0'>
+          <div class='w-32 rounded-xl bg-base/[.5] p-4 shadow-sm border-box border-2 border-solid border-white/[.75] dark:bg-dark dark:opacity-100 dark: border-0'>
             <img src={darkMode() ? darkImage : lightImage} />
           </div>
         </div>
