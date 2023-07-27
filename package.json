@@ -1,9 +1,20 @@
 {
-  "name": "@nvision/fileparser",
-  "version": "1.0.0",
+  "name": "@nvisionjs/parse",
+  "version": "1.0.4",
   "main": "index.ts",
-  "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
-  "keywords": ["nextjs", "next", "react", "devtool"],
+  "contributors": [
+    "Bennett Ma",
+    "Caitlin O'Donohue",
+    "Isaac Lee",
+    "Jiyoung Lee",
+    "Sunny Pacheco"
+  ],
+  "keywords": [
+    "nextjs",
+    "next",
+    "react",
+    "devtool"
+  ],
   "license": "MIT",
   "homepage": "",
   "repository": {

@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path')
 
 export default async function fileParser(rootFolder: String): Promise<object>{
-
   // Initialize object to be passed to the tree visualizer
   const files = {
     name: 'app',
