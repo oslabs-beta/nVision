@@ -5,10 +5,18 @@
   "scripts": {
     "build:tsc": "tsc --build"
   },
+  "bin": {
+    "nvisionfileparser": "makefile.js"
+  },
+  "files": [
+    "dist/*",
+    "makefile.js"
+  ],
   "devDependencies": {
     "@types/node": "^20.4.5"
   },
   "dependencies": {
+    "fs-extra": "^11.1.1",
     "typescript": "^5.1.6"
   }
 }
