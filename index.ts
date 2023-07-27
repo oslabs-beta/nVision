@@ -4,14 +4,13 @@ const path = require('path')
 export default async function fileParser(rootFolder: String): Promise<object>{
 
   const files = {
-    name: rootFolder,
+    name: 'app',
   };
 
   async function parseFolders(directory: String, rootObj: any) {
 
     fs.readdirSync(directory).forEach((file:any) => {
       const absolute = path.join(directory, file);
-      console.log("in the parse function", absolute)
 
       if (fs.statSync(absolute).isDirectory()) {
         let folderToAdd = { name: file, children: [] };
