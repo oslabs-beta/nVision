@@ -14,13 +14,13 @@ const columns: GridColDef[] = [
   {
     field: 'statusCode',
     headerName: 'Status Code',
-    width: 150,
+    width: 125,
     editable: true,
   },
   {
     field: 'method',
     headerName: 'Method',
-    width: 150,
+    width: 125,
     editable: true,
   },
   {
@@ -50,8 +50,8 @@ export default function Table(props: tableProps):React.JSX.Element {
     <div className={grid}>
       <Box
         sx={{
-          height: '70vh',
-          width: '70vw',
+          height: '100%',
+          width: '100%',
           bgcolor: 'rgba(75,85,99,.5)',
           padding: '24px',
           paddingBottom: '40px',

@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "main": "dist/bundle.js",
   "scripts": {
-    "build": "webpack-cli ./app/nvision.tsx --config webpack.config.js",
-    "build:tsc": "tsc --build",
-    "build:css": "tailwindcss -o dist/style/global.css --minify"
+    "build": "webpack-cli ./app/nvision.tsx --config webpack.config.js"
   },
   "files": [
     "dist/*"
@@ -44,7 +42,6 @@
     "cssnano": "^6.0.1",
     "daisyui": "^3.2.1",
     "file-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^2.7.6",
     "postcss": "^8.4.27",
     "postcss-import": "^15.1.0",
     "postcss-loader": "^7.3.3",

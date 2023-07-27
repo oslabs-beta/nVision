@@ -3,7 +3,7 @@
 .h_screen {
   height: 100vh;
 }
-.tab {
+.disabled_tab {
   border-top-left-radius: 0.5rem/* 8px */;
   border-top-right-radius: 0.5rem/* 8px */;
   border-bottom-left-radius: 0px;
@@ -13,7 +13,7 @@
   padding-right: 0.75rem/* 12px */;
   min-height: 2rem/* 32px */;
   font-size: 0.875rem/* 14px */;
-  background-color: rgb(209 213 219 / .4);
+  background-color: rgba(75,85,99,.3);
 }
 .active_tab {
   border-top-left-radius: 0.5rem/* 8px */;
@@ -25,21 +25,23 @@
   padding-right: 0.75rem/* 12px */;
   min-height: 2rem/* 32px */;
   font-size: 0.875rem/* 14px */;
-  background-color: rgb(209 213 219);
+  background-color: rgba(75,85,99,.6);
 }
 .bg-gray-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
-.table {
+.dashboard {
   background-color: rgb(209 213 219 / .4);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
-  box-sizing: content-box;
+  align-items: center;
+  box-sizing: border-box;
   padding: 1.5rem/* 24px */;
   border-width: 4px;
+  width: 80vw;
+  height: 90vh;
 }
 .table_inner {
   display: flex;
@@ -58,14 +60,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
-  box-sizing: content-box;
-  border-width: 4px;
-  height: 80vh;
-  width: 70vw;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 1.5rem;
+  width: 100%;
+  height: 100%;
 }
 .grid {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 1rem/* 16px */;
+  width: 100%;
+  height: 100%;
 }
