@@ -9,7 +9,21 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="halo"></div>
     <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
+    <script type="text/javascript">
+      VANTA.HALO({
+        el: '#halo',
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 800.0,
+        minWidth: 300.0,
+        size: 2.0,
+      });
+    </script>
 
     <script src="/src/index.tsx" type="module"></script>
   </body>
