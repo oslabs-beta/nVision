@@ -16,22 +16,20 @@ export default function DataGridDemo(props: DashboardProps): React.JSX.Element {
   const [tab, setTab] = useState('table');
   const [trace, setTrace] = useState<object[]>([]);
 
-  // --------WebSockets--------
+  // --------WebSocket Connection--------
   const getSocketData = useCallback(async () => {
     const ws = new WebSocket(wsURL);
     ws.onopen = () => {
-      console.log('Connected to socket');
-      ws.send('FROM THE CLIENT');
+      console.log('Connected to socket.');
     };
     ws.onmessage = async (message) => {
       const received = await JSON.parse(message.data);
       received[0].duration = received[0].duration.toFixed(2);
       setTrace((prev) => [...received, ...prev]);
     };
-    // on close we should update connection state
-    // and retry connection
+
     ws.onclose = () => {
-      console.log('connection lost');
+      console.log('Socket connection lost.');
       setTimeout(function () {
         getSocketData();
       }, 1000);
