@@ -1,8 +1,19 @@
 {
-  "name": "@nvision/create",
-  "version": "1.0.0",
-  "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
-  "keywords": ["nextjs", "next", "react", "devtool"],
+  "name": "nvisionjs",
+  "version": "1.0.5",
+  "contributors": [
+    "Bennett Ma",
+    "Caitlin O'Donohue",
+    "Isaac Lee",
+    "Jiyoung Lee",
+    "Sunny Pacheco"
+  ],
+  "keywords": [
+    "nextjs",
+    "next",
+    "react",
+    "devtool"
+  ],
   "license": "MIT",
   "homepage": "",
   "repository": {
@@ -10,16 +21,20 @@
     "url": "https://github.com/oslabs-beta/nVision"
   },
   "bin": {
-    "nvision-create": "makefiles.js"
+    "nvisionjs-create": "makefiles.js"
   },
   "files": [
     "makefiles.js",
     "nvisionDashboard/*",
-    "fileparser/*",
+    "nvisionParser/*",
     "instrumentation.js",
     "nvisionServer.js"
   ],
   "dependencies": {
+    "@nvisionjs/dashboard": "^1.0.1",
+    "@nvisionjs/parse": "^1.0.3",
+    "@nvisionjs/server": "^1.0.2",
+    "@nvisionjs/trace": "^1.0.1",
     "@types/node": "^20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

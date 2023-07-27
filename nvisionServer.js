@@ -1,1 +1,1 @@
-// require('@nvision/server');
+require('@nvisionjs/server');

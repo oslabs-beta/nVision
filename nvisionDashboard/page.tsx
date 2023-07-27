@@ -1,19 +1,19 @@
-// import Wrapper from './Wrapper';
+import Wrapper from './Wrapper';
 
-// async function getFiles() {
-//   const files = await fetch('http://localhost:3000/api/fileParser', {
-//     method: 'GET',
-//   });
-//   const parsedFiles = await files.json();
-//   return parsedFiles;
-// }
+async function getFiles() {
+  const files = await fetch('http://localhost:3000/api/nvisionParser', {
+    method: 'GET',
+  });
+  const parsedFiles = await files.json();
+  return parsedFiles;
+}
 
-// export default async function Dashboard() {
-//   const result = await getFiles();
+export default async function Dashboard() {
+  const result = await getFiles();
 
-//   return (
-//     <>
-//       <Wrapper info={result} />
-//     </>
-//   );
-// }
+  return (
+    <>
+      <Wrapper info={result} />
+    </>
+  );
+}
