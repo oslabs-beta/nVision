@@ -19,7 +19,7 @@
     }
   },
   "include": [
-    "server/**/*",
+    "instrumentation/**/*",
   ],
   "exclude": [
     "node_modules",
