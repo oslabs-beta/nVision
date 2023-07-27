@@ -27,7 +27,7 @@ const Navbar: Component = () => {
         <img src={dark} class='w-6 h-6' alt='dark-mode' />
         <input
           type='checkbox'
-          class="toggle toggle-primary bg-[url('/assets/light.svg')]"
+          class="toggle toggle-primary"
           checked
           onChange={toggleDarkMode}
         />
