@@ -1,7 +1,4 @@
 const path = require("path");
-const tailwindcss = require('tailwindcss');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
 
 module.exports = {
   mode: 'production',
