@@ -6,7 +6,7 @@
     "build:tsc": "tsc --build"
   },
   "bin": {
-    "nvisionfileparser": "makefile.js"
+    "nvision-fileparser": "makefile.js"
   },
   "files": [
     "dist/*",
