@@ -1,6 +1,6 @@
 {
-  "name": "@nvision/server",
-  "version": "1.0.0",
+  "name": "@nvisionjs/server",
+  "version": "1.0.2",
   "main": "dist/startServer.js",
   "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
   "keywords": ["nextjs", "next", "react", "devtool"],
@@ -14,9 +14,7 @@
     "build:tsc": "tsc --build"
   },
   "files": [
-    "dist/*",
-    "makefile.js",
-    "nvisionServer.js"
+    "dist/*"
   ],
   "dependencies": {
     "@types/express": "^4.17.17",
