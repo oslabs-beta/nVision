@@ -2,8 +2,19 @@
   "name": "@nvision/dashboard",
   "version": "1.0.0",
   "main": "dist/bundle.js",
-  "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
-  "keywords": ["nextjs", "next", "react", "devtool"],
+  "contributors": [
+    "Bennett Ma",
+    "Caitlin O'Donohue",
+    "Isaac Lee",
+    "Jiyoung Lee",
+    "Sunny Pacheco"
+  ],
+  "keywords": [
+    "nextjs",
+    "next",
+    "react",
+    "devtool"
+  ],
   "license": "MIT",
   "homepage": "",
   "repository": {
@@ -47,7 +58,6 @@
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
-    "cssnano": "^6.0.1",
     "daisyui": "^3.2.1",
     "file-loader": "^6.2.0",
     "postcss": "^8.4.27",
