@@ -13,13 +13,8 @@
   "scripts": {
     "build": "webpack-cli ./app/nvision.tsx --config webpack.config.js"
   },
-  "bin": {
-    "nvision-dashboard": "makefile.js"
-  },
   "files": [
-    "dist/*",
-    "makefile.js",
-    "dashboard/*"
+    "dist/*"
   ],
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.22.9",

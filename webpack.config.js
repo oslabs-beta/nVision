@@ -2,7 +2,6 @@ const path = require("path");
 
 module.exports = {
   mode: 'production',
-  // entry: './app/nvision.tsx',
   devtool: 'inline-source-map',
   output: {
     filename: 'bundle.js',
