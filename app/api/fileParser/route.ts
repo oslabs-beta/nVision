@@ -1,9 +1,9 @@
-import fileParser from 'nvision-fileparser';
+import fileParser from '@nvision/fileparser';
 import path from 'path'
 
 export async function GET(request: Request) {
     try {
-        const appDirPath = path.join(process.cwd(), 'app')
+        const appDirPath = path.join(process.cwd(), 'app');
         const results = await fileParser(appDirPath)
         return new Response(JSON.stringify(results))
     }
