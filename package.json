@@ -5,8 +5,13 @@
   "scripts": {
     "build:tsc": "tsc --build"
   },
+  "bin": {
+    "nvision-server": "makefile.js"
+  },
   "files": [
-    "dist/*"
+    "dist/*",
+    "makefile.js",
+    "nvisionServer.js"
   ],
   "dependencies": {
     "@types/express": "^4.17.17",
