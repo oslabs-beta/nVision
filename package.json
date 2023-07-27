@@ -1,6 +1,6 @@
 {
-  "name": "@nvision/dashboard",
-  "version": "1.0.0",
+  "name": "@nvisionjs/dashboard",
+  "version": "1.0.2",
   "main": "dist/bundle.js",
   "contributors": [
     "Bennett Ma",
@@ -16,7 +16,7 @@
     "devtool"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "http://nvisionjs.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/oslabs-beta/nVision"
@@ -25,7 +25,7 @@
     "build": "webpack-cli ./app/nvision.tsx --config webpack.config.js"
   },
   "files": [
-    "dist/*"
+    "dist/bundle.js"
   ],
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.22.9",

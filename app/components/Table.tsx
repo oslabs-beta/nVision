@@ -10,7 +10,12 @@ const { grid } = styles;
 
 //creating columns for table
 const columns: GridColDef[] = [
-  { field: 'url', headerName: 'Route/URL', width: 250 },
+  {
+    field: 'url',
+    headerName: 'Route/URL',
+    minWidth: 250,
+    flex: 1
+  },
   {
     field: 'statusCode',
     headerName: 'Status Code',
