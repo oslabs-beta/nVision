@@ -1,8 +1,5 @@
-'use client';
-
-import Loading from '@/app/loading';
 import Link from 'next/link';
-import { Suspense } from 'react';
+import { SavePokemon } from '@/app/components/SavePokemon';
 
 async function fetchPokemonInfo(name: String) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
@@ -23,12 +20,6 @@ interface contextObj {
 const PokemonInfo = async (context: contextObj) => {
   const pokemonName = context.params.name;
   const charStats = await fetchPokemonInfo(pokemonName);
-
-  function savePokemon(name: String) {
-    fetch(`/api/favorites/${name}/`, {
-      method: 'POST',
-    });
-  }
 
   return (
     <div className='flex flex-wrap flex-col items-center'>
@@ -69,17 +60,7 @@ const PokemonInfo = async (context: contextObj) => {
               alt={`A picture of ${pokemonName}`}
             ></img>
           </div>
-          <div>
-            <Link href='../'>
-              <button
-                className='btn btn-success btn-xs m-3'
-                onClick={() => savePokemon(pokemonName)}
-              >
-                Save Pokemon
-              </button>
-            </Link>
-            <Suspense fallback={<Loading />}></Suspense>
-          </div>
+          <SavePokemon pokemonName={pokemonName}/>
         </div>
       </div>
     </div>

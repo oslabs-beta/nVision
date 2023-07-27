@@ -2,8 +2,19 @@
   "name": "pokemon",
   "version": "0.1.0",
   "private": true,
-  "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
-  "keywords": ["nextjs", "next", "react", "devtool"],
+  "contributors": [
+    "Bennett Ma",
+    "Caitlin O'Donohue",
+    "Isaac Lee",
+    "Jiyoung Lee",
+    "Sunny Pacheco"
+  ],
+  "keywords": [
+    "nextjs",
+    "next",
+    "react",
+    "devtool"
+  ],
   "license": "MIT",
   "homepage": "",
   "repository": {
@@ -19,18 +30,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/base": "^5.0.0-beta.8",
-    "@mui/icons-material": "^5.14.0",
-    "@mui/material": "^5.14.1",
-    "@mui/system": "^5.14.1",
-    "@nvision/dashboard": "file:../npmDashboard/nvision-dashboard-1.0.0.tgz",
-    "@nvision/fileparser": "file:../npmFileParser/nvision-fileparser-1.0.0.tgz",
-    "@nvision/server": "file:../npmServer/nvision-server-1.0.0.tgz",
-    "@nvision/trace": "file:../npmTrace/nvision-trace-1.0.0.tgz",
-    "@types/express": "^4.17.17",
-    "@types/material-ui": "^0.21.12",
     "@types/node": "^20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

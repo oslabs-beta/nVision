@@ -1,26 +1,24 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import FavoriteCard from './FavoriteCard';
 import { v4 as uuid } from 'uuid';
+import ServerCard from './ServerCard';
 
-const PokemonList = () => {
-  const [pokemon, setPokemon] = useState<[]>([]);
+const fetchAllPokemon = async () => {
+  try {
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon/', {
+      method: 'GET',
+    });
+    const data = await response.json();
+    return data.results;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-  useEffect(() => {
-    const fetchAllPokemon = async () => {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
-      const starterPokemon = await response.json();
-      setPokemon(starterPokemon.results);
-    };
-
-    fetchAllPokemon();
-  }, []);
-
+const PokemonList = async () => {
+  const pokemon = await fetchAllPokemon();
   return (
     <div className='flex flex-wrap flex-hor justify-center'>
-      {pokemon.map(({ name }) => {
-        return <FavoriteCard key={uuid()} name={name} />;
+      {pokemon.map(({name}: {name: string}) => {
+        return <ServerCard key={uuid()} name={name} />;
       })}
     </div>
   );
