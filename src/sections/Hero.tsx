@@ -1,12 +1,10 @@
 import type { Component } from 'solid-js';
-import logo from '../assets/logo.svg';
 
 const Hero: Component = () => {
   return (
     <div class='h-[95vh]'>
       <div class='hero'>
         <div class='hero-content flex-col lg:flex-row-reverse'>
-          <img src={logo} alt='nVision'></img>
           <div>
             <h1 class='mb-5 text-5xl font-bold'>nVision</h1>
             <p>

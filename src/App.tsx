@@ -9,13 +9,11 @@ import GetStarted from './sections/GetStarted';
 
 const App: Component = () => {
   const { darkMode } = setMode;
-
-  if (darkMode()) document.body.classList.add('darkmode')
   
   return (
     <div class={darkMode() ? 'dark' : ''}>
       <Navbar />
-      <div class="bg-indigo-100 dark:bg-[#17191b] px-20 pb-20">
+      <div class={`bg-indigo-100 dark:bg-[#1e1e20] px-20 pb-20`}>
         <Hero />
         <Features />
         <Demo />

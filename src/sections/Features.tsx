@@ -1,6 +1,5 @@
 import type { Component } from 'solid-js';
 import FeatureCard from '../components/FeatureCard';
-import logo from '../assets/logo.svg';
 import eyesLight from '../assets/light/observability.svg'
 import eyesDark from '../assets/dark/observability.svg'
 import treeLight from '../assets/light/tree.svg'
