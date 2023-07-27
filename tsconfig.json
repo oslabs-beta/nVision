@@ -4,6 +4,6 @@
     "module": "commonjs",
     "outDir": "./dist"
   },
-  "include": ["index.ts", "fileparser/route.ts"],
+  "include": ["index.ts"],
   "exclude": ["node_modules", "./dist"]
 }
