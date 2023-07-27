@@ -8,7 +8,7 @@ const Navbar: Component = () => {
   const { toggleDarkMode } = setMode;
 
   return (
-    <div class='flex justify-between bg-base px-5 py-8 h-[5vh] sticky top-0 z-[99] shadow-2xl'>
+    <div class='flex justify-between bg-base px-5 py-8 h-[5vh] sticky top-0 z-[99] shadow-2xl dark:bg-[#17191b]'>
       <div id='nav-links' class='flex items-center'>
         <a class='mr-4' href='#nvision'>
           <img src={logo} class='w-10 h-10' alt='logo' />
@@ -18,6 +18,9 @@ const Navbar: Component = () => {
         </a>
         <a class='mr-4' href='#Demo'>
           Demo
+        </a>
+        <a class='mr-4' href='#Get-Started'>
+          Get Started
         </a>
         <a class='mr-4' href='#Team'>
           Team

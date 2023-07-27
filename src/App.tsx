@@ -5,6 +5,7 @@ import Features from './sections/Features';
 import Team from './sections/Team';
 import setMode from "./setMode";
 import Demo from './sections/Demo';
+import GetStarted from './sections/GetStarted';
 
 const App: Component = () => {
   const { darkMode } = setMode;
@@ -18,6 +19,7 @@ const App: Component = () => {
         <Hero />
         <Features />
         <Demo />
+        <GetStarted />
         <Team />
       </div>
     </div>

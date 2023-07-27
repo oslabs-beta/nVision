@@ -1,18 +1,7 @@
 import type { Component } from 'solid-js';
 import logo from '../assets/logo.svg';
-import clipboard from '../assets/clipboard.svg'
 
 const Hero: Component = () => {
-  const copy = () => {
-    const codeLines = document.querySelectorAll('code')
-    let commands:string = '';
-
-    codeLines.forEach((command) => {
-      if (command.textContent) commands = commands.concat(command.textContent,'\n')
-    })
-    navigator.clipboard.writeText(commands);
-  }
-
   return (
     <div class='h-[95vh]'>
       <div class='hero'>
@@ -31,20 +20,6 @@ const Hero: Component = () => {
             </p>
           </div>
         </div>
-      </div>
-      <div class='mockup-code w-6/12'>
-        <button onClick={copy} class='h-7 w-7 absolute top-0 right-0 m-4'>
-          <img src={clipboard} class='h-7 w-7' />
-        </button>
-        <pre data-prefix='$'>
-          <code>npm i @nvision/dashboard</code>
-        </pre>
-        <pre data-prefix='$'>
-          <code>npm i @nvision/tree</code>
-        </pre>
-        <pre data-prefix='$'>
-          <code>npx nvision</code>
-        </pre>
       </div>
     </div>
   );
