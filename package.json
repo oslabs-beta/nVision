@@ -1,6 +1,6 @@
 {
-  "name": "@nvision/trace",
-  "version": "1.0.0",
+  "name": "@nvisionjs/trace",
+  "version": "1.0.1",
   "main": "dist/startTrace.js",
   "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
   "keywords": ["nextjs", "next", "react", "devtool"],
