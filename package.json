@@ -13,19 +13,13 @@
   "scripts": {
     "build:tsc": "tsc --build"
   },
-  "bin": {
-    "nvision-trace": "makefile.js"
-  },
   "files": [
-    "dist/*",
-    "makefile.js",
-    "instrumentation.js"
+    "dist/*"
   ],
   "dependencies": {
     "@opentelemetry/exporter-trace-otlp-http": "^0.41.0",
     "@opentelemetry/sdk-node": "^0.41.0",
     "@opentelemetry/sdk-trace-node": "^1.15.0",
-    "fs-extra": "^11.1.1",
     "opentelemetry": "^0.1.0"
   },
   "devDependencies": {
