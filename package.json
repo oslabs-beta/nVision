@@ -1,6 +1,7 @@
 {
   "name": "@nvisionjs/dashboard",
-  "version": "1.1.1",
+  "version": "1.1.2",
+  "description": "A Next.js observability tool",
   "main": "dist/bundle.js",
   "contributors": [
     "Bennett Ma",

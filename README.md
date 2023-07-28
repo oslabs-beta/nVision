@@ -4,11 +4,6 @@ nVision is an open-source developer tool for Next.js applications that provides 
 
 _Note: nVision currently only supports App Router_
 
-<p align="center">
-    <img width="300" src="./assets/logo.svg" alt="nVision">
-</p>
-
-
 ## Getting Started
 
 Run the following commands to install nVision's npm package and add the necessary files required to implement nVision: 
