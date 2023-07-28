@@ -1,7 +1,3 @@
-<p align="center">
-    <img width="300" src="./assets/logo.svg" alt="nVision">
-</p>
-
 # nVision
 
 nVision is an open-source developer tool for Next.js applications that provides users server-side network request metrics and an interactive hierarchical file tree, aiding with rapid debugging and deployment. 
