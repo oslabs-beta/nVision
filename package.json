@@ -1,6 +1,7 @@
 {
   "name": "@nvisionjs/parse",
-  "version": "1.0.4",
+  "version": "1.1.0",
+  "description": "A Next.js observability tool",
   "main": "index.ts",
   "contributors": [
     "Bennett Ma",
