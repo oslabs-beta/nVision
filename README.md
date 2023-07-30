@@ -32,18 +32,6 @@ Open your application in a new window to view real time updates on the dashboard
 - Users can view the directory structure of their app in tree form to help visualize complex applications
 
 
-## Examples
-### Table view
-<p align="center">
-  <img src="./assets/TableGifHigh.gif">
-</p>
-
-### Tree view
-<p align="center">
-  <img src="./assets/treeGif.gif">
-</p>
-
-
 ## Contributors
 
 Caitlin O'Donohue - [GitHub](https://github.com/codeFromCO) | [Linkedin](https://www.linkedin.com/in/caitlin-odonohue/)
