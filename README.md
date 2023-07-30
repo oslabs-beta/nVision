@@ -6,14 +6,19 @@ _Note: nVision currently only supports App Router_
 
 ## Getting Started
 
-Run the following commands to install nVision's npm package and add the necessary files required to implement nVision: 
+Run the following commands to install nVision's npm package and add the necessary files required to implement nVision 
 ```bash
 npm install nvisionjs
 npx nvisionjs-create
 ```
 
+Add the below to your `next.config.js`
+```javascript
+experimental: { instrumentationHook: true }
+```
+
 Add the following script to your package.json
-```bash
+```json
 "nvision": "node --require ./nvisionServer.js & next dev"
 ```
 
