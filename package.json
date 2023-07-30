@@ -1,12 +1,12 @@
 {
   "name": "@nvisionjs/trace",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Next.js observability tool",
   "main": "dist/startTrace.js",
   "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
   "keywords": ["nextjs", "next", "react", "devtool"],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "http://nvisionjs.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/oslabs-beta/nVision"
