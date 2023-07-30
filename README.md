@@ -12,8 +12,13 @@ npm install nvisionjs
 npx nvisionjs-create
 ```
 
-Add the following script to your package.json
-```bash
+Add the below to your `next.config.js`
+```javascript
+experimental: { instrumentationHook: true },
+```
+
+Add the following script to your `package.json`
+```json
 "nvision": "node --require ./nvisionServer.js & next dev"
 ```
 
