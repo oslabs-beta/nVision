@@ -1,6 +1,6 @@
 {
   "name": "nvisionjs",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A Next.js observability tool",
   "contributors": [
     "Bennett Ma",
@@ -32,10 +32,10 @@
     "nvisionServer.js"
   ],
   "dependencies": {
-    "@nvisionjs/dashboard": "^1.1.6",
-    "@nvisionjs/parse": "^1.1.7",
-    "@nvisionjs/server": "^1.1.3",
-    "@nvisionjs/trace": "^1.1.2",
+    "@nvisionjs/dashboard": "^1.1.7",
+    "@nvisionjs/parse": "^1.1.8",
+    "@nvisionjs/server": "^1.1.4",
+    "@nvisionjs/trace": "^1.1.4",
     "@types/node": "^20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
