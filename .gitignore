@@ -38,3 +38,4 @@ next-env.d.ts
 .env
 dev.db*
 node_modules
+package-lock.json
