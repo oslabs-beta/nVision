@@ -49,6 +49,13 @@ Open your application in a new window to view real time updates on the dashboard
 </p>
 
 
+## Upcoming Features
+ - Augmented metrics for client-side and database requests
+ - Expanded network activity visualization
+ - Support for Pages Router
+ - New dashboard tab to display route connections between pages
+
+
 ## Contributors
 
 Caitlin O'Donohue - [GitHub](https://github.com/codeFromCO) | [Linkedin](https://www.linkedin.com/in/caitlin-odonohue/)
@@ -60,6 +67,10 @@ Jiyoung Lee - [GitHub](https://github.com/jiyoungglee/) | [Linkedin](https://www
 Isaac Lee - [GitHub](https://github.com/Third-Isaac) | [Linkedin](https://www.linkedin.com/in/thirdisaac/)
 
 Bennett Ma - [GitHub](https://github.com/bmgitcode) | [Linkedin](https://www.linkedin.com/in/bennett-ma/)
+
+
+## Special Mentions
+Special thanks to the [NetPulse](https://github.com/oslabs-beta/NetPulse) team for their advice and inspiration.
 
 
 ## License
