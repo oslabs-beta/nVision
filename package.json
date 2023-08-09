@@ -1,6 +1,6 @@
 {
   "name": "@nvisionjs/server",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Next.js observability tool",
   "main": "dist/startServer.js",
   "contributors": ["Bennett Ma", "Caitlin O'Donohue", "Isaac Lee", "Jiyoung Lee", "Sunny Pacheco"],
