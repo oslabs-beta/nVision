@@ -34,12 +34,7 @@ if (process.env.MY_APP_RUNNING) {
 
             terminal.write('\nTo view your nVision dashboard: \n 1. Add the following line to your package.json scripts: "nvision": "node --require ./nvisionServer.js & next dev"\n 2. Run "npm run nvision" in your terminal.\n 3. Navigate to http://localhost:3000/nvisionDashboard first (or the local development environment your application is running in). \n 4. In a new window, open your application and navigate through to view updates in the dashboard.')
             rl.close(); 
-        } else {
-            terminal.write('Okay. To manually install nVision, please see documentation on https://github.com/oslabs-beta/nVision\n')
-
-            rl.close()
-        }
-
+        } 
     })
 
 
