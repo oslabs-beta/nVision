@@ -6,7 +6,7 @@ _Note: nVision currently only supports App Router_
 
 ## Getting Started
 
-Run the following commands to install nVision's npm package and add the necessary files required to implement nVision 
+Run the following commands to install nVision's npm package and add the necessary files required to implement nVision: 
 ```bash
 npm install nvisionjs
 npx nvisionjs-create
@@ -14,10 +14,10 @@ npx nvisionjs-create
 
 Add the below to your `next.config.js`
 ```javascript
-experimental: { instrumentationHook: true }
+experimental: { instrumentationHook: true },
 ```
 
-Add the following script to your package.json
+Add the following script to your `package.json`
 ```json
 "nvision": "node --require ./nvisionServer.js & next dev"
 ```
@@ -37,6 +37,13 @@ Open your application in a new window to view real time updates on the dashboard
 - Users can view the directory structure of their app in tree form to help visualize complex applications
 
 
+## Upcoming Features
+ - Augmented metrics for client-side and database requests
+ - Expanded network activity visualization
+ - Support for Pages Router
+ - New dashboard tab to display route connections between pages
+
+
 ## Contributors
 
 Caitlin O'Donohue - [GitHub](https://github.com/codeFromCO) | [Linkedin](https://www.linkedin.com/in/caitlin-odonohue/)
@@ -48,6 +55,10 @@ Jiyoung Lee - [GitHub](https://github.com/jiyoungglee/) | [Linkedin](https://www
 Isaac Lee - [GitHub](https://github.com/Third-Isaac) | [Linkedin](https://www.linkedin.com/in/thirdisaac/)
 
 Bennett Ma - [GitHub](https://github.com/bmgitcode) | [Linkedin](https://www.linkedin.com/in/bennett-ma/)
+
+
+## Special Mentions
+Special thanks to the [NetPulse](https://github.com/oslabs-beta/NetPulse) team for their advice and inspiration.
 
 
 ## License
