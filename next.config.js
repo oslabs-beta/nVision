@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     instrumentationHook: true
   },
+  output: 'standalone',
   // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
   //   config.externals.push({
   //     'utf-8-validate': 'commonjs utf-8-validate',
