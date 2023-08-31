@@ -31,13 +31,7 @@
     "server:nodemon": "nodemon --exec ts-node server/server.ts"
   },
   "dependencies": {
-    "@opentelemetry/api": "^1.4.1",
-    "@opentelemetry/auto-instrumentations-web": "^0.33.1",
-    "@opentelemetry/context-zone": "^1.15.2",
-    "@opentelemetry/instrumentation-document-load": "^0.33.1",
     "@opentelemetry/instrumentation-http": "^0.41.2",
-    "@opentelemetry/instrumentation-user-interaction": "^0.33.1",
-    "@opentelemetry/instrumentation-xml-http-request": "^0.41.2",
     "@types/node": "^20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",

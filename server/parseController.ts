@@ -72,12 +72,7 @@ const parseBaseServer = (span: [fetchSpanData], data: object[]) => {
 export const parseController = {
   getData: function (req: Request, res: Response, next: NextFunction) {
     const spans = req.body.resourceSpans[0].scopeSpans[0].spans;
-    console.log(spans)
-    // console.log(req.body.resourceSpans[0].resource.attributes[0])
-    // if (req.body.resourceSpans[0].resource.attributes[0].value.stringValue === 'web-tracer-test') {
-    //   console.dir(req.body, {depth: null})
-    // };
-  
+
     const spanType = spans[0].attributes.find(
       (attr: { key: string; }) => attr.key === 'next.span_type'
     )?.value?.stringValue;
