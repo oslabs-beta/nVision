@@ -1,6 +1,6 @@
 {
-  "name": "pokemon",
-  "version": "0.1.0",
+  "name": "nvision-demoapp",
+  "version": "1.0.0",
   "private": true,
   "contributors": [
     "Bennett Ma",
@@ -26,9 +26,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "server": "ts-node --project tsconfig.json server/server.ts",
-    "server:nodemon": "nodemon --exec ts-node server/server.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@opentelemetry/instrumentation-http": "^0.41.2",

@@ -1,6 +1,6 @@
 {
-  "name": "pokemon",
-  "version": "0.1.0",
+  "name": "nvisionjs-dockerserver",
+  "version": "1.0.0",
   "private": true,
   "contributors": [
     "Bennett Ma",

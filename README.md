@@ -4,6 +4,24 @@ nVision is an open-source developer tool for Next.js applications that provides 
 
 _Note: nVision currently only supports App Router_
 
+## Run With Docker
+NOTE: Must have Docker installed. [Click here](https://docs.docker.com/get-docker/) to install.
+
+### Server
+1. Navigate to `./collector` directory.
+2. Build the container: `docker build -t nvision/server .`.
+3. Run the container: `docker run -p 8080:8080 nvision/server`.
+
+### Dashboard
+1. Navigate to `./frontend` directory.
+2. Build the container: `docker build -t nvision/dashboard .`.
+3. Run the container: `docker run -p 4000:4000 nvision/server`.
+
+### Run Your Application
+Open your dashboard by going to [http://localhost:4000](http://localhost:4000) (or wherever your app is hosted).
+Start up your application in dev mode in a new window to view real time updates on the dashboard.
+<!-- NOTE: Still need the instrumentation file the experimental property in next.config.js -->
+
 ## Getting Started
 
 Run the following commands to install nVision's npm package and add the necessary files required to implement nVision: 
