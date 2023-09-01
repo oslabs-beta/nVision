@@ -8,18 +8,20 @@ _Note: nVision currently only supports App Router_
 NOTE: Must have Docker installed. [Click here](https://docs.docker.com/get-docker/) to install.
 
 ### Server
-1. Navigate to `./collector` directory.
+1. Navigate to `/collector` directory.
 2. Build the container: `docker build -t nvision/server .`.
 3. Run the container: `docker run -p 8080:8080 nvision/server`.
 
 ### Dashboard
-1. Navigate to `./frontend` directory.
+1. Navigate to `/frontend` directory.
 2. Build the container: `docker build -t nvision/dashboard .`.
-3. Run the container: `docker run -p 4000:4000 nvision/server`.
+3. Run the container: `docker run -p 4000:4000 nvision/dashboard`.
 
 ### Run Your Application
-Open your dashboard by going to [http://localhost:4000](http://localhost:4000) (or wherever your app is hosted).
-Start up your application in dev mode in a new window to view real time updates on the dashboard.
+1. Open your dashboard by going to [http://localhost:4000](http://localhost:4000).  
+2. Start up your application in dev mode in a new window.  
+  OR, start up the demo app by navigating to `/sample-app`. Run `npm i && npm run dev`.  
+3. Navigate to [http://localhost:3000](http://localhost:3000) or wherever your app is hosted to view real time updates on the dashboard.
 <!-- NOTE: Still need the instrumentation file the experimental property in next.config.js -->
 
 ## Getting Started
