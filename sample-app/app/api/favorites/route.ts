@@ -1,5 +1,5 @@
-import Favorite from '@/app/models/FavoritesModel';
-import { connectToDB } from '@/utils/dbConnect';
+import Favorite from '@/sample-app/app/models/FavoritesModel';
+import { connectToDB } from '@/sample-app/utils/dbConnect';
 
 export async function GET(request: Request) {
   try {
